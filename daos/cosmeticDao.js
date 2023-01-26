@@ -29,8 +29,8 @@ const search = async (title, BCategory, SCategory, page, limit) => {
                     [Op.eq]: SCategory
                 }
             });
-        };
-    };
+        }
+    }
     const data = await Cosmetic.findAndCountAll({
         where: query,
         offset,
@@ -38,6 +38,15 @@ const search = async (title, BCategory, SCategory, page, limit) => {
         order: [['src', 'DESC']]
     });
     return { data: data.rows, total: data.count };
-}
+};
 
-module.exports = { search };
+const get = async (Cid) => {
+    const data = await Cosmetic.findOne({
+        where: {
+            Cid: Cid,
+        },
+    });
+    return data;
+};
+
+module.exports = { search, get };
