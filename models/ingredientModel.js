@@ -16,11 +16,11 @@ const Ingredient = sequelize.define('Ingredient', {
     },
     EwgGrade: {
         type: Sequelize.STRING(128),
-        allowNull: false,
+        allowNull: true,
     },
     EwgData: {
         type: Sequelize.STRING(128),
-        allowNull: false,
+        allowNull: true,
     },
     Rating: {
         type: Sequelize.STRING(128),
@@ -28,14 +28,14 @@ const Ingredient = sequelize.define('Ingredient', {
     },
     Color: {
         type: Sequelize.STRING(128),
-        allowNull: false,
+        allowNull: true,
     },
     NInhibition: {
-        type: Sequelize.STRING(128),
+        type: Sequelize.STRING(4),
         allowNull: false,
     },
     NLimit: {
-        type: Sequelize.STRING(128),
+        type: Sequelize.STRING(4),
         allowNull: false,
     },
     Purpose: {
@@ -43,11 +43,19 @@ const Ingredient = sequelize.define('Ingredient', {
         allowNull: true,
     },
     Allergic: {
-        type: Sequelize.JSON,
+        type: Sequelize.STRING(4),
         allowNull: true,
     },
     Functional: {
         type: Sequelize.JSON,
+        allowNull: true,
+    },
+    PPH: {
+        type: Sequelize.JSON,
+        allowNull: true,
+    },
+    ASPCA: {
+        type: Sequelize.STRING(4),
         allowNull: true,
     },
 }, {
