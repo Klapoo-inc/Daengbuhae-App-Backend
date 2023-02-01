@@ -10,7 +10,6 @@ const CosmeticReview = sequelize.define('CosmeticReview', {
     Cid: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         foreignKey: true,
     },
     Uid: {

@@ -4,6 +4,7 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const cosmeticRouter = require('./routes/cosmeticRouter')
 const ingredientRouter = require('./routes/ingredientRouter')
+const cosmeticlikeRouter = require('./routes/cosmeticlikeRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -35,6 +36,7 @@ const specs = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/cosmetic', cosmeticRouter);
 app.use('/ingredient', ingredientRouter);
+app.use('/cosmeticlike', cosmeticlikeRouter);
 
 sequelize.authenticate()
     .then(() => {
