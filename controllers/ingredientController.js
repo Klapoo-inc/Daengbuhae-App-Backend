@@ -31,7 +31,8 @@ const getIngredients = async (req, res) => {
     try {
         const request = ingredientDto.fromRequest_get(req);
         const ingredients = await ingredientDao.get(request.Cid);
-        const ingredientsDto = ingredients.map(ingredientDto.fromDb_get);
+        let ingredientsDto = ingredients;
+        ingredientsDto.data = ingredients.data.map(ingredientDto.fromDb_get);
         res.status(200).json(ingredientsDto);
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });

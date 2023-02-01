@@ -9,11 +9,15 @@ const cosmeticDto = require('../dtos/cosmeticDto');
  *     tags:
  *       - 화장품
  *     description:
- *       "title 기본값 undefined (화장품 명 혹은 브랜드 명) <br>
- *       BCategory 기본값 undefined <br>
- *       SCategory 기본값 undefined <br>
- *       page 기본값 1 <br>
- *       limit 기본값 10"
+ *       "title: string / 기본값 undefined (화장품 명 혹은 브랜드 명) <br>
+ *       BCategory: string / 기본값 undefined <br>
+ *       SCategory: string / 기본값 undefined <br>
+ *       NInhibition: bool / 기본값 undefined  <br>
+ *       NLimit: bool / 기본값 undefined <br>
+ *       Allergic: bool / 기본값 undefined <br>
+ *       filter: list(string) / 기본값 undefined <br>
+ *       page: int / 기본값 1 <br>
+ *       limit: int / 기본값 10"
  *     requestBody:
  *       required: true
  *       content:
@@ -23,10 +27,20 @@ const cosmeticDto = require('../dtos/cosmeticDto');
  *             properties:
  *               title:
  *                 type: string
- *               SCategory:
- *                 type: string
  *               BCategory:
  *                 type: string
+ *               SCategory:
+ *                 type: string
+ *               NInhibition:
+ *                 type: boolean
+ *               NLimit:
+ *                 type: boolean
+ *               Allergic:
+ *                 type: boolean
+ *               filter:
+ *                 type: array
+ *                 items:
+ *                   type: string
  *               page:
  *                 type: integer
  *                 default: 1
@@ -43,7 +57,7 @@ const cosmeticDto = require('../dtos/cosmeticDto');
 const searchCosmetics = async (req, res) => {
     try {
         const request = cosmeticDto.fromRequest_search(req);
-        const cosmetics = await cosmeticDao.search(request.title !== undefined ? request.title : "", request.BCategory, request.SCategory, request.page !== undefined ? request.page : 1, request.limit !== undefined ? request.limit : 10);
+        const cosmetics = await cosmeticDao.search(request.title !== undefined ? request.title : "", request.BCategory, request.SCategory, request.NInhibition, request.NLimit, request.Allergic, request.filter, request.page !== undefined ? request.page : 1, request.limit !== undefined ? request.limit : 10);
         const cosmeticsDto = {
             total: cosmetics.total,
         }

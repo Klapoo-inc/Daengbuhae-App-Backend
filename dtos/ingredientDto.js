@@ -17,6 +17,8 @@ const fromDb_get = (db) => {
         Purpose: db.Purpose,
         Allergic: db.Allergic,
         Functional: db.Functional,
+        PPH: db.PPH,
+        ASPCA: db.ASPCA
     };
 };
 

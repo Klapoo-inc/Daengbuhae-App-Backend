@@ -1,7 +1,7 @@
 const Cosmetic = require('../models/cosmeticModel');
 const { Op } = require('sequelize');
 
-const search = async (title, BCategory, SCategory, page, limit) => {
+const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic, filter, page, limit) => {
     const offset = (page - 1) * limit;
     const query = {
       [Op.and]: [
@@ -31,6 +31,38 @@ const search = async (title, BCategory, SCategory, page, limit) => {
             });
         }
     }
+    if (NInhibition) {
+        query[Op.and].push({
+            NInhibition: {
+                [Op.gt]: 0
+            }
+        });
+    }
+    if (NLimit) {
+        query[Op.and].push({
+            NLimit: {
+                [Op.gt]: 0
+            }
+        });
+    }
+    if (Allergic) {
+        query[Op.and].push({
+            Allergic: {
+                [Op.gt]: 0
+            }
+        });
+    }
+    if (filter) {
+        let filter_query = {[Op.or]: []};
+        for (const item of filter) {
+            filter_query[Op.or].push({
+                ['CountFunctional.' + item]: {
+                    [Op.ne]: 0
+                }
+            });
+        }
+        query[Op.and].push(filter_query);
+    }
     const data = await Cosmetic.findAndCountAll({
         where: query,
         offset,
@@ -41,11 +73,7 @@ const search = async (title, BCategory, SCategory, page, limit) => {
 };
 
 const get = async (Cid) => {
-    const data = await Cosmetic.findOne({
-        where: {
-            Cid: Cid,
-        },
-    });
+    const data = await Cosmetic.findByPk(Cid);
     return data;
 };
 

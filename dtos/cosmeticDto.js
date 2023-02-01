@@ -3,6 +3,10 @@ const fromRequest_search = (req) => {
         title: req.body.title,
         SCategory: req.body.SCategory,
         BCategory: req.body.BCategory,
+        NInhibition: req.body.NInhibition,
+        NLimit: req.body.NLimit,
+        Allergic: req.body.Allergic,
+        filter: req.body.filter,
         page: req.body.page,
         limit: req.body.limit,
     };

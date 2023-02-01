@@ -34,6 +34,26 @@ const Cosmetic = sequelize.define('Cosmetic', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    NInhibition: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    NLimit: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    Allergic: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    CountFunctional: {
+        type: Sequelize.JSON,
+        allowNull: false,
+    },
+    CountRating: {
+        type: Sequelize.JSON,
+        allowNull: false,
+    },
 }, {
   tableName: "Cosmetic",
     paranoid: true,
