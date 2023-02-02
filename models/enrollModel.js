@@ -19,6 +19,18 @@ const Enroll = sequelize.define('Enroll', {
         type: Sequelize.TINYINT,
         allowNull: false,
     },
+    image1: {
+        type: Sequelize.STRING(255),
+        allowNull: true,
+    },
+    image2: {
+        type: Sequelize.STRING(255),
+        allowNull: true,
+    },
+    image3: {
+        type: Sequelize.STRING(255),
+        allowNull: true,
+    },
 }, {
     tableName: "Enroll",
     paranoid: true,

@@ -5,6 +5,8 @@ const swaggerUi = require('swagger-ui-express');
 const cosmeticRouter = require('./routes/cosmeticRouter')
 const ingredientRouter = require('./routes/ingredientRouter')
 const cosmeticlikeRouter = require('./routes/cosmeticlikeRouter')
+const enrollRouter = require('./routes/enrollRouter')
+const enrollimageRouter = require('./routes/enrollimageRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -37,6 +39,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/cosmetic', cosmeticRouter);
 app.use('/ingredient', ingredientRouter);
 app.use('/cosmeticlike', cosmeticlikeRouter);
+app.use('/enroll', enrollRouter);
+app.use('/enroll-image', enrollimageRouter);
 
 sequelize.authenticate()
     .then(() => {
