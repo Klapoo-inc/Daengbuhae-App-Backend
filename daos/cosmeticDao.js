@@ -52,7 +52,7 @@ const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic
             }
         });
     }
-    if (filter) {
+    if (filter && filter.length > 0) {
         let filter_query = {[Op.or]: []};
         for (const item of filter) {
             filter_query[Op.or].push({
