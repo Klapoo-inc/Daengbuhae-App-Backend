@@ -5,7 +5,7 @@ const ingredientDto = require('../dtos/ingredientDto');
  * @swagger
  * /ingredient/get:
  *   post:
- *     summary: 화장품 성분 정보 획득
+ *     summary: 화장품 성분 정보 조회
  *     tags:
  *       - 성분
  *     description:

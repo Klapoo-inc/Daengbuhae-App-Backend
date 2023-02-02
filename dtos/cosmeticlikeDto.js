@@ -1,7 +1,16 @@
 const fromRequest_get = (req) => {
     return {
         Cid: req.query.Cid,
-        Uid: req.query.Uid
+        Uid: req.query.Uid,
+        page: Number(req.query.page),
+        limit: Number(req.query.limit)
+    };
+};
+
+const fromDb_get = (db) => {
+    return {
+        Uid: db.Uid,
+        Cid: db.Cid,
     };
 };
 
@@ -19,4 +28,4 @@ const fromRequest_delete = (req) => {
     };
 };
 
-module.exports = { fromRequest_get, fromRequest_create, fromRequest_delete };
+module.exports = { fromRequest_get, fromDb_get, fromRequest_create, fromRequest_delete };

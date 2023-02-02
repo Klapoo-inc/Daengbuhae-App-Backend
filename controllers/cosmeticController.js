@@ -57,7 +57,7 @@ const cosmeticDto = require('../dtos/cosmeticDto');
 const searchCosmetics = async (req, res) => {
     try {
         const request = cosmeticDto.fromRequest_search(req);
-        const cosmetics = await cosmeticDao.search(request.title !== undefined ? request.title : "", request.BCategory, request.SCategory, request.NInhibition, request.NLimit, request.Allergic, request.filter, request.page !== undefined ? request.page : 1, request.limit !== undefined ? request.limit : 10);
+        const cosmetics = await cosmeticDao.search(request.title !== undefined ? request.title : "", request.BCategory, request.SCategory, request.NInhibition, request.NLimit, request.Allergic, request.filter, request.page? request.page : 1, request.limit? request.limit : 10);
         const cosmeticsDto = {
             total: cosmetics.total,
         }
