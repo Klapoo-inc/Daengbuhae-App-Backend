@@ -13,6 +13,7 @@ const CosmeticLike = sequelize.define('CosmeticLike', {
     },
 }, {
     tableName: "CosmeticLike",
+    paranoid: true
 });
 
 module.exports = CosmeticLike;
