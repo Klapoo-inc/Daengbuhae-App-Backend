@@ -1,8 +1,8 @@
 const express = require('express');
-const imageController = require('../controllers/enrollimageController');
+const enrollimageController = require('../controllers/enrollimageController');
 
 const router = express.Router();
 
-router.post('/', imageController.uploadImage);
+router.post('/', enrollimageController.uploadImage);
 
 module.exports = router;

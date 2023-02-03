@@ -15,7 +15,7 @@ const upload = multer().array('image');
  * @swagger
  * /enroll-image:
  *   post:
- *     summary: S3 이미지 저장
+ *     summary: S3 상품 등록 이미지 저장
  *     tags:
  *       - S3 이미지 저장
  *     description:

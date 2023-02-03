@@ -7,6 +7,7 @@ const ingredientRouter = require('./routes/ingredientRouter')
 const cosmeticlikeRouter = require('./routes/cosmeticlikeRouter')
 const enrollRouter = require('./routes/enrollRouter')
 const enrollimageRouter = require('./routes/enrollimageRouter')
+const petRouter = require('./routes/petRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -41,6 +42,7 @@ app.use('/ingredient', ingredientRouter);
 app.use('/cosmeticlike', cosmeticlikeRouter);
 app.use('/enroll', enrollRouter);
 app.use('/enroll-image', enrollimageRouter);
+app.use('/pet', petRouter);
 
 sequelize.authenticate()
     .then(() => {

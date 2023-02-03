@@ -1,6 +1,11 @@
 const fromRequest_get = (req) => {
     return {
-        Pid: req.query.Pid,
+        Pid: req.query.Pid
+    };
+};
+
+const fromRequest_all_get = (req) => {
+    return {
         Uid: req.query.Uid
     };
 };
@@ -42,8 +47,7 @@ const fromRequest_update = (req) => {
 
 const fromRequest_delete = (req) => {
     return {
-        Pid: req.query.Pid,
-        Uid: req.query.Uid
+        Pid: req.query.Pid
     };
 };
 
@@ -55,9 +59,9 @@ const fromRequest_main_get = (req) => {
 
 const fromRequest_main_update = (req) => {
     return {
-        Pid: req.query.Pid,
-        Uid: req.query.Uid
+        Pid: req.body.Pid,
+        Uid: req.body.Uid
     };
 };
 
-module.exports = { fromRequest_get, fromRequest_create, fromRequest_update, fromRequest_delete, fromRequest_main_get, fromRequest_main_update };
+module.exports = { fromRequest_get, fromRequest_all_get, fromRequest_create, fromRequest_update, fromRequest_delete, fromRequest_main_get, fromRequest_main_update };
