@@ -1,20 +1,22 @@
 const Pet = require('../models/petModel');
 
-const Get = async (Cid, Uid) => {
+const Get = async (Pid, Uid) => {
     const data = await Pet.findOne({
         where: {
-            Cid: Cid,
+            Pid: Pid,
             Uid: Uid
         }
     });
     return data;
 };
 
-const Create = async (Cid, Uid) => {
-    const result = await Pet.create({
-        Cid: Cid,
-        Uid: Uid
-    });
+const Create = async (pet) => {
+    const result = await Pet.create(pet);
+    return result;
+};
+
+const Update = async (pet) => {
+    const result = await Pet.create(pet);
     return result;
 };
 

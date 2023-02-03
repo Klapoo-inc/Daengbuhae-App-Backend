@@ -14,6 +14,7 @@ const fromRequest_search = (req) => {
 
 const fromDb_search = (db) => {
     return {
+        Cid: db.Cid,
         title: db.title,
         brand: db.brand,
         src: db.src,

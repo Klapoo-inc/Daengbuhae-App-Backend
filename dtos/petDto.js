@@ -7,16 +7,57 @@ const fromRequest_get = (req) => {
 
 const fromRequest_create = (req) => {
     return {
-        Cid: req.body.Cid,
-        Uid: req.body.Uid
+        Uid: req.body.Uid,
+        birth: req.body.birth,
+        gender: req.body.gender,
+        src: req.body.src,
+        kind: req.body.kind,
+        name: req.body.name,
+        neutering: req.body.neutering,
+        vaccination: req.body.vaccination,
+        weight: req.body.weight,
+        allergic: req.body.allergic,
+        ill: req.body.ill,
+        bath: req.body.bath
+    };
+};
+
+const fromRequest_update = (req) => {
+    return {
+        Pid: req.body.Pid,
+        Uid: req.body.Uid,
+        birth: req.body.birth,
+        gender: req.body.gender,
+        src: req.body.src,
+        kind: req.body.kind,
+        name: req.body.name,
+        neutering: req.body.neutering,
+        vaccination: req.body.vaccination,
+        weight: req.body.weight,
+        allergic: req.body.allergic,
+        ill: req.body.ill,
+        bath: req.body.bath
     };
 };
 
 const fromRequest_delete = (req) => {
     return {
-        Cid: req.query.Cid,
+        Pid: req.query.Pid,
         Uid: req.query.Uid
     };
 };
 
-module.exports = { fromRequest_get, fromRequest_create, fromRequest_delete };
+const fromRequest_main_get = (req) => {
+    return {
+        Uid: req.query.Uid
+    };
+};
+
+const fromRequest_main_update = (req) => {
+    return {
+        Pid: req.query.Pid,
+        Uid: req.query.Uid
+    };
+};
+
+module.exports = { fromRequest_get, fromRequest_create, fromRequest_update, fromRequest_delete, fromRequest_main_get, fromRequest_main_update };
