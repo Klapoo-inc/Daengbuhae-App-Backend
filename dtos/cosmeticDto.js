@@ -34,6 +34,7 @@ const fromDb_get = (db) => {
         src: db.src,
         AvgRating: db.AvgRating,
         read: db.read,
+        CupangSrc: db.CupangSrc,
     };
 };
 
