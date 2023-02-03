@@ -17,6 +17,16 @@ const get = async (Cid) => {
             })
         },
     });
+    if (data.length > 0) {
+        for (const i of data) {
+            if (i.Purpose && Object.keys(i.Purpose).length) {
+                i.Purpose = Object.values(i.Purpose);
+            }
+            if (i.Functional && Object.keys(i.Functional).length) {
+                i.Functional = Object.values(i.Functional);
+            }
+        }
+    }
     return {
         CountRating: cosmetic.CountRating,
         CountFunctional: cosmetic.CountFunctional,
