@@ -54,7 +54,7 @@ const Cosmetic = sequelize.define('Cosmetic', {
         type: Sequelize.JSON,
         allowNull: false,
     },
-    CupangSrc: {
+    CoupangSrc: {
         type: Sequelize.STRING(255),
         allowNull: true,
     },
