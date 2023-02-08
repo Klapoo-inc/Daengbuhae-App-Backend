@@ -58,6 +58,14 @@ const Cosmetic = sequelize.define('Cosmetic', {
         type: Sequelize.STRING(255),
         allowNull: true,
     },
+    CountColor: {
+        type: Sequelize.JSON,
+        allowNull: false,
+    },
+    PPH: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
 }, {
   tableName: "Cosmetic",
     paranoid: true,

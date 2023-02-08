@@ -29,6 +29,8 @@ const get = async (Cid) => {
     }
     return {
         CountRating: cosmetic.CountRating,
+        CountColor: cosmetic.CountColor,
+        PPH: cosmetic.PPH,
         CountFunctional: cosmetic.CountFunctional,
         NInhibition: cosmetic.NInhibition,
         NLimit: cosmetic.NLimit,
