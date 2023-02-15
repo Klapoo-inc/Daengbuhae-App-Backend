@@ -1,5 +1,5 @@
 const fs = require('fs');
-
+//asd
 const Cosmetic = require('./models/cosmeticModel')
 
 const data1 = JSON.parse(fs.readFileSync("cosmetic_sql0208.json"));
