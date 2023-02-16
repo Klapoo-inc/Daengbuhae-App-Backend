@@ -32,6 +32,8 @@ const fromDb_get = (db) => {
         title: db.title,
         brand: db.brand,
         src: db.src,
+        BCategory: db.BCategory,
+        SCategory: db.SCategory,
         AvgRating: db.AvgRating,
         read: db.read,
         CoupangSrc: db.CoupangSrc,
