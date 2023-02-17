@@ -77,7 +77,7 @@ const getCosmeticLike = async (req, res) => {
  *               Cid:
  *                 type: integer
  *               Uid:
- *                 type: integer
+ *                 type: string
  *     responses:
  *       200:
  *         description: Success
@@ -125,7 +125,7 @@ const createCosmeticLike = async (req, res) => {
 
 const deleteCosmeticLike = async (req, res) => {
     try {
-        const request = cosmeticlikeDto.fromRequest_get(req);
+        const request = cosmeticlikeDto.fromRequest_delete(req);
         const cosmeticlike = await cosmeticlikeDao.Delete(request.Cid, request.Uid);
         res.status(200).json(cosmeticlike);
     } catch (error) {
