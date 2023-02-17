@@ -1,8 +1,13 @@
 const fs = require('fs');
+<<<<<<< HEAD
 //asd
 const Cosmetic = require('./models/cosmeticModel')
+=======
 
-const data1 = JSON.parse(fs.readFileSync("cosmetic_sql0208.json"));
+const Cosmetic = require('./models/cosmeticingredientModel')
+>>>>>>> ab7bbf316a63f3e646bfc18448cbc4fe605cee43
+
+const data1 = JSON.parse(fs.readFileSync("cosmeticingredient_sql0215.json"));
 
 Cosmetic.sync({force: false}).then(() => {
     Cosmetic.bulkCreate(data1).then(() => {
