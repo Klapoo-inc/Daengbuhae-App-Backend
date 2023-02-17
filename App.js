@@ -5,6 +5,7 @@ const swaggerUi = require('swagger-ui-express');
 const cosmeticRouter = require('./routes/cosmeticRouter')
 const ingredientRouter = require('./routes/ingredientRouter')
 const cosmeticlikeRouter = require('./routes/cosmeticlikeRouter')
+const cosmeticreviewRouter = require('./routes/cosmeticreviewRouter')
 const enrollRouter = require('./routes/enrollRouter')
 const enrollimageRouter = require('./routes/enrollimageRouter')
 const petRouter = require('./routes/petRouter')
@@ -40,6 +41,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/cosmetic', cosmeticRouter);
 app.use('/ingredient', ingredientRouter);
 app.use('/cosmeticlike', cosmeticlikeRouter);
+app.use('/cosmeticreview', cosmeticreviewRouter);
 app.use('/enroll', enrollRouter);
 app.use('/enroll-image', enrollimageRouter);
 app.use('/pet', petRouter);

@@ -17,3 +17,7 @@ yarn-error.log*
 
 package-lock.json
 yarn.lock
+
+#docs
+docs.text
+.data/
