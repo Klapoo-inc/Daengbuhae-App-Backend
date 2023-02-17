@@ -1,4 +1,4 @@
-const CosmeticReviewDao = require('../daos/CosmeticReviewDao');
+const CosmeticReviewDao = require('../daos/cosmeticreviewDao');
 const CosmeticReviewDto = require('../dtos/CosmeticReviewDto');
 const cosmeticDao = require('../daos/cosmeticDao');
 const cosmeticDto = require('../dtos/cosmeticDto');
