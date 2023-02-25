@@ -33,15 +33,15 @@ const Pet = sequelize.define('Pet', {
         allowNull: true,
     },
     neutering: {
-        type: Sequelize.TINYINT,
+        type: Sequelize.STRING(128),
         allowNull: true,
     },
     vaccination: {
-        type: Sequelize.TINYINT,
+        type: Sequelize.STRING(128),
         allowNull: true,
     },
     weight: {
-        type: Sequelize.TINYINT,
+        type: Sequelize.STRING(128),
         allowNull: true,
     },
     allergic: {
