@@ -68,5 +68,9 @@ const Delete = async (Rid) => {
     await data.destroy();
     return data;
 };
-
-module.exports = {Get, Create, Delete };
+const Update = async (Rid, req) => {
+    const review = await CosmeticReview.findByPk(Rid);
+    const result = await review.update(req);
+    return result;
+};
+module.exports = {Update, Get, Create, Delete };

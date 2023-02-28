@@ -35,4 +35,20 @@ const fromRequest_delete = (req) => {
     };
 };
 
-module.exports = {fromDb_get, fromRequest_get, fromRequest_create, fromRequest_delete };
+const fromRequest_update = (req) => {
+    return {
+        Rid: req.body.Rid,
+        Cid: req.body.Cid,
+        Uid: req.body.Uid,
+        Pid: req.body.Pid,
+        rating1: req.body.rating1,
+        rating2: req.body.rating2,
+        content: req.body.content,
+        image1: req.body.image1,
+        image2: req.body.image2,
+        image3: req.body.image3,
+        good: req.body.good
+    };
+};
+
+module.exports = {fromDb_get, fromRequest_get, fromRequest_create, fromRequest_delete, fromRequest_update };
