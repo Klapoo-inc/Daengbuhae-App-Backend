@@ -3,7 +3,7 @@ const cosmeticreviewController = require('../controllers/cosmeticreviewControlle
 
 const router = express.Router();
 //
-// router.get('/', cosmeticreviewController.getCosmeticReview);
+router.get('/', cosmeticreviewController.searchCosmeticReview);
 router.post('/', cosmeticreviewController.createCosmeticReview);
 router.delete('/', cosmeticreviewController.deleteCosmeticReview);
 

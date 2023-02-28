@@ -51,4 +51,5 @@ const MainUpdate = async (Pid, Uid) => {
     return data;
 };
 
+
 module.exports = { Get, AllGet, Create, Update, Delete, MainGet, MainUpdate };

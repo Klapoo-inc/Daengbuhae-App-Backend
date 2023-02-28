@@ -35,4 +35,4 @@ const fromRequest_delete = (req) => {
     };
 };
 
-module.exports = { fromRequest_get, fromRequest_create, fromRequest_delete };
+module.exports = {fromDb_get, fromRequest_get, fromRequest_create, fromRequest_delete };
