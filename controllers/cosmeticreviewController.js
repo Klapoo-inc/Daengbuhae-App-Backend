@@ -3,59 +3,55 @@ const CosmeticReviewDto = require('../dtos/cosmeticreviewDto');
 const cosmeticDao = require('../daos/cosmeticDao');
 const cosmeticDto = require('../dtos/cosmeticDto');
 
-// /**
-//  * @swagger
-//  * /CosmeticReview:
-//  *   get:
-//  *     summary: 상품찜 조회
-//  *     tags:
-//  *       - 상품찜
-//  *     description:
-//  *       "Uid: 유저 id (필수) <br>
-//  *       Cid: 화장품 id (선택) <br>
-//  *       page: 1 (선택) <br>
-//  *       limit: 10 (선택) <br>
-//  *       Uid만 입력시에 page와 limit이 필요함 (상품 페이지에서는 Uid, Cid 함께 사용 / 마이페이지에서 Uid, page, limit 사용)"
-//  *     parameters:
-//  *       - name: Uid
-//  *         description: 유저 id
-//  *         in: query
-//  *         required: true
-//  *         type: string
-//  *       - name: Cid
-//  *         description: 화장품 id
-//  *         in: query
-//  *         required: false
-//  *         type: integer
-//  *       - name: page
-//  *         in: query
-//  *         required: false
-//  *         type: integer
-//  *       - name: limit
-//  *         in: query
-//  *         required: false
-//  *         type: integer
-//  *     responses:
-//  *       200:
-//  *         description: Success
-//  *       500:
-//  *         description: Internal Server Error
-//  */
-//
-// const getCosmeticReview = async (req, res) => {
-//     try {
-//         const request = CosmeticReviewDto.fromRequest_get(req);
-//         let CosmeticReview = await CosmeticReviewDao.Get(request.Cid, request.Uid, request.page? request.page : 1, request.limit? request.limit : 10);
-//         CosmeticReview.data = CosmeticReview.data.map(CosmeticReviewDto.fromDb_get);
-//         CosmeticReview.data = await Promise.all(CosmeticReview.data.map(async(value, index, array) => {
-//             const cosmetic = cosmeticDto.fromDb_get(await cosmeticDao.get(value.Cid));
-//             return { ...value, ...cosmetic };
-//         }));
-//         res.status(200).json(CosmeticReview);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Internal Server Error', error });
-//     }
-// };
+/**
+ * @swagger
+ * /CosmeticReview:
+ *   get:
+ *     summary: 화장품리뷰 조회
+ *     tags:
+ *       - 화장품리뷰
+ *     description:
+ *       "Uid: 유저 id (선택) <br>
+ *       Cid: 화장품 id (선택) <br>
+ *       page: 1 (선택) <br>
+ *       limit: 10 (선택) <br>
+ *       Uid만 입력시에 page와 limit이 필요함 (상품 페이지에서는 Uid, Cid 함께 사용 / 마이페이지에서 Uid, page, limit 사용)"
+ *     parameters:
+ *       - name: Uid
+ *         description: 유저 id
+ *         in: query
+ *         required: true
+ *         type: string
+ *       - name: Cid
+ *         description: 화장품 id
+ *         in: query
+ *         required: false
+ *         type: integer
+ *       - name: page
+ *         in: query
+ *         required: false
+ *         type: integer
+ *       - name: limit
+ *         in: query
+ *         required: false
+ *         type: integer
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
+
+const searchCosmeticReview = async (req, res) => {
+    try {
+        const request = CosmeticReviewDto.fromRequest_get(req);
+        let CosmeticReview = await CosmeticReviewDao.Get(request.Cid, request.Uid, request.page? request.page : 1, request.limit? request.limit : 10);
+
+        res.status(200).json(CosmeticReview);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
 
 /**
  * @swagger
@@ -152,4 +148,4 @@ const deleteCosmeticReview = async (req, res) => {
     }
 };
 
-module.exports = { createCosmeticReview, deleteCosmeticReview };
+module.exports = {searchCosmeticReview, createCosmeticReview, deleteCosmeticReview };

@@ -1,25 +1,52 @@
 const CosmeticReview = require('../models/cosmeticreviewModel');
+const { Op } = require('sequelize');
+const Pet = require('../models/petModel');
 
-// const Get = async (Cid, Uid, page, limit) => {
-//     if (Cid) {
-//         const data = await CosmeticReview.findOne({
-//             where: {
-//                 Cid: Cid,
-//                 Uid: Uid
-//             }
-//         });
-//         return data;
-//     }
-//     const offset = (page - 1) * limit;
-//     const data = await CosmeticReview.findAndCountAll({
-//         where: {
-//             Uid: Uid
-//         },
-//         offset,
-//         limit
-//     })
-//     return { total: data.count, data: data.rows };
-// };
+const Get = async (Cid, Uid, page, limit) => {
+    const offset = (page - 1) * limit;
+
+    if (Cid && Uid) {
+        const data = await CosmeticReview.findAndCountAll({
+            where: {
+                Cid: Cid,
+                Uid: Uid
+            },
+            offset,
+            limit
+        });
+
+
+
+    }else if (Cid) {
+        const data = await CosmeticReview.findAndCountAll({
+            where: {
+                Cid: Cid
+            },
+            offset,
+            limit
+        });
+        const pet = await Pet.findAll({
+            where: {
+                [Op.or]: data.rows.map((value, index, array) => {
+                    return { Pid: value.Pid };
+                })
+            },
+        });
+        return { total: data.count, data: data.rows, pet: pet };
+    }else if (Uid) {
+        const data = await CosmeticReview.findAndCountAll({
+            where: {
+                Uid: Uid
+            },
+            offset,
+            limit
+        });
+        return { total: data.count, data: data.rows };
+    }
+
+
+
+};
 
 const Create = async (req) => {
     const result = await CosmeticReview.create({
@@ -42,4 +69,4 @@ const Delete = async (Rid) => {
     return data;
 };
 
-module.exports = { Create, Delete };
+module.exports = {Get, Create, Delete };
