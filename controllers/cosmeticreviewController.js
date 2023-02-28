@@ -1,7 +1,6 @@
 const CosmeticReviewDao = require('../daos/cosmeticreviewDao');
 const CosmeticReviewDto = require('../dtos/cosmeticreviewDto');
-const cosmeticDao = require('../daos/cosmeticDao');
-const cosmeticDto = require('../dtos/cosmeticDto');
+
 
 /**
  * @swagger
@@ -147,5 +146,69 @@ const deleteCosmeticReview = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
 };
+/**
+ * @swagger
+ * /CosmeticReview:
+ *   put:
+ *     summary: 화장품리뷰 수정
+ *     tags:
+ *       - 화장품리뷰
+ *     description:
+ *       "Rid: 리뷰 id (필수) <br>
+ *       Cid: 화장품 id (필수) <br>
+ *       Uid: 유저 id (필수) <br>
+ *       Pid: 펫 id (필수) <br>
+ *       rating1: 상품평(필수) <br>
+ *       rating2: 사용성 (필수) <br>
+ *       content: 리뷰 본문(필수) <br>
+ *       image1: 리뷰 이미지 <br>
+ *       image2: 리뷰 이미지 <br>
+ *       image3: 리뷰 이미지 <br>
+ *
+ *
+ *       "
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               Rid:
+ *                 type: integer
+ *               Cid:
+ *                 type: integer
+ *               Uid:
+ *                 type: string
+ *               Pid:
+ *                 type: integer
+ *               rating1:
+ *                 type: integer
+ *               rating2:
+ *                 type: integer
+ *               content:
+ *                 type: integer
+ *               image1:
+ *                 type: string
+ *               image2:
+ *                 type: string
+ *               image3:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
 
-module.exports = {searchCosmeticReview, createCosmeticReview, deleteCosmeticReview };
+const updateCosmeticReview = async (req, res) => {
+    try {
+        const request = CosmeticReviewDto.fromRequest_update(req);
+        const review = await CosmeticReviewDao.Update(request.Rid, request);
+        res.status(200).json(review);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
+
+module.exports = {searchCosmeticReview, createCosmeticReview, deleteCosmeticReview, updateCosmeticReview};
