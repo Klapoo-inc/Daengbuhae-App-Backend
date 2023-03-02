@@ -1,6 +1,7 @@
 const CosmeticReview = require('../models/cosmeticreviewModel');
 const { Op } = require('sequelize');
 const Pet = require('../models/petModel');
+const Cosmetic = require('../models/cosmeticModel');
 
 const Get = async (Cid, Uid, page, limit) => {
     const offset = (page - 1) * limit;
@@ -41,7 +42,14 @@ const Get = async (Cid, Uid, page, limit) => {
             offset,
             limit
         });
-        return { total: data.count, data: data.rows };
+        const cosmetic = await Cosmetic.findAll({
+            where: {
+                [Op.or]: data.rows.map((value, index, array) => {
+                    return { Cid: value.Cid };
+                })
+            },
+        });
+        return { total: data.count, data: data.rows, cosmetic: cosmetic };
     }
 
 
