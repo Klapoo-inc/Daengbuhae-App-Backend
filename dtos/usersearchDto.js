@@ -17,7 +17,7 @@ const fromRequest_create = (req) => {
 
 const fromRequest_delete = (req) => {
     return {
-        Pid: req.query.Sid
+        Sid: req.query.Sid
     };
 };
 
