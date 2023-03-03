@@ -22,5 +22,17 @@ const fromDb_get = (db) => {
         Iid: db.Iid
     };
 };
+const fromDb_search = (db) => {
+    return {
+        Iid: db.Iid,
+        title_en: db.title_en,
+        title_ko: db.title_ko
+    };
+};
+const fromRequest_search = (req) => {
+    return {
+        title: req.body.title,
+    };
+};
 
-module.exports = { fromRequest_get, fromDb_get };
+module.exports = { fromRequest_get, fromDb_get, fromDb_search, fromRequest_search };

@@ -38,5 +38,27 @@ const get = async (Cid) => {
         data: data
     };
 };
-
-module.exports = { get };
+const search = async (title, page, limit) => {
+    const offset = (page - 1) * limit;
+    const query = {
+        [Op.and]: [
+            {
+                [Op.or]: [
+                    Ingredient.sequelize.where(Ingredient.sequelize.fn('CONCAT', Ingredient.sequelize.fn('REGEXP_REPLACE', Ingredient.sequelize.col('title_en'), ' ', ''), ' '), {
+                        [Op.like]: Ingredient.sequelize.fn('CONCAT', '%', Ingredient.sequelize.fn('REGEXP_REPLACE', title, ' ', ''), '%')
+                    }),
+                    Ingredient.sequelize.where(Ingredient.sequelize.fn('CONCAT', Ingredient.sequelize.fn('REGEXP_REPLACE', Ingredient.sequelize.col('title_ko'), ' ', ''), ' '), {
+                        [Op.like]: Ingredient.sequelize.fn('CONCAT', '%', Ingredient.sequelize.fn('REGEXP_REPLACE', title, ' ', ''), '%')
+                    }),
+                ]
+            },
+        ]
+    };
+    const data = await Ingredient.findAndCountAll({
+        where: query,
+        offset,
+        limit
+    });
+    return { data: data.rows, total: data.count };
+};
+module.exports = { get, search };
