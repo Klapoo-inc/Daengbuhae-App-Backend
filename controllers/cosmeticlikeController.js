@@ -47,6 +47,7 @@ const getCosmeticLike = async (req, res) => {
         const request = cosmeticlikeDto.fromRequest_get(req);
         let cosmeticlike = await cosmeticlikeDao.Get(request.Cid, request.Uid, request.page? request.page : 1, request.limit? request.limit : 10);
         cosmeticlike.data = cosmeticlike.data.map(cosmeticlikeDto.fromDb_get);
+
         cosmeticlike.data = await Promise.all(cosmeticlike.data.map(async(value, index, array) => {
             const cosmetic = cosmeticDto.fromDb_get(await cosmeticDao.get(value.Cid));
             return { ...value, ...cosmetic };

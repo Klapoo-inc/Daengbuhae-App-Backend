@@ -8,7 +8,7 @@ const Get = async (Cid, Uid, page, limit) => {
                 Uid: Uid
             }
         });
-        return data;
+        return {data: [data]};
     }
     const offset = (page - 1) * limit;
     const data = await CosmeticLike.findAndCountAll({

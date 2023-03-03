@@ -7,7 +7,7 @@ const CosmeticLike = sequelize.define('CosmeticLike', {
         foreignKey: true,
     },
     Uid: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(255),
         allowNull: false,
         foreignKey: true,
     },
