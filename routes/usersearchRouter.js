@@ -1,10 +1,10 @@
 const express = require('express');
-const Controller = require('../controllers/usersearchController');
+const usersearchController = require('../controllers/usersearchController');
 
 const router = express.Router();
 
-router.get('/', Controller.getUserSearch);
-router.post('/', Controller.createUserSearch);
-router.delete('/', Controller.deleteUserSearch);
+router.get('/', usersearchController.getUserSearch);
+router.post('/', usersearchController.createUserSearch);
+router.delete('/', usersearchController.deleteUserSearch);
 
 module.exports = router;

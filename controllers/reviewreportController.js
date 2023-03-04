@@ -64,6 +64,7 @@ const ReviewReportDto = require('../dtos/reviewreportDto');
  *       Uid: 유저 id (필수) <br>
  *       rid: review id <br>
  *       content: content <br>
+ *       title: title <br>
  *
  *
  *
@@ -82,6 +83,8 @@ const ReviewReportDto = require('../dtos/reviewreportDto');
  *               Rid:
  *                 type: integer
  *               content:
+ *                 type: string
+ *               title:
  *                 type: string
  *
  *     responses:
