@@ -12,6 +12,7 @@ const petRouter = require('./routes/petRouter')
 const petimageRouter = require('./routes/petimageRouter')
 const reviewimageRouter = require('./routes/reviewimageRouter')
 const usersearchRouter = require('./routes/usersearchRouter')
+const reviewreportRouter = require('./routes/reviewreportRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -51,6 +52,7 @@ app.use('/pet', petRouter);
 app.use('/pet-image', petimageRouter);
 app.use('/review-image', reviewimageRouter);
 app.use('/usersearch', usersearchRouter);
+app.use('/reviewreport', reviewreportRouter);
 
 sequelize.authenticate()
     .then(() => {
