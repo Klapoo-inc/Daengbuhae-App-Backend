@@ -3,7 +3,8 @@ const fromRequest_create = (req) => {
         Uid: req.body.Uid,
         Cid: req.body.Cid,
         Rid: req.body.Rid,
-        content: req.body.content
+        content: req.body.content,
+        title: req.body.title
     };
 };
 
