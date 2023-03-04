@@ -31,6 +31,10 @@ const ReviewReport = sequelize.define('ReviewReport', {
         type: Sequelize.TEXT,
         allowNull: false,
     },
+    title: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+    }
 }, {
     tableName: "ReviewReport",
     paranoid: true,
