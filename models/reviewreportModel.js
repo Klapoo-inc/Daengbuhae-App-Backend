@@ -17,12 +17,18 @@ const ReviewReport = sequelize.define('ReviewReport', {
         allowNull: false,
         foreignKey: true,
     },
+    Uid: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+        foreignKey: true,
+    },
+
     state: {
         type: Sequelize.TINYINT,
         allowNull: false,
     },
-    title: {
-        type: Sequelize.STRING(128),
+    content: {
+        type: Sequelize.TEXT,
         allowNull: false,
     },
 }, {
