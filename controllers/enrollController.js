@@ -9,7 +9,9 @@ const enrollDto = require('../dtos/enrollDto');
  *     tags:
  *       - 상품 등록
  *     description:
- *       "title: 제품 명 (필수) <br>
+ *       "
+ *       category: 제품 카테고리(필수)<br>
+ *       title: 제품 명 (필수) <br>
  *       brand: 브랜드 명 (필수) <br>
  *       image1: 이미지 주소 (선택) <br>
  *       image2: 이미지 주소 (선택) <br>
@@ -21,6 +23,8 @@ const enrollDto = require('../dtos/enrollDto');
  *           schema:
  *             type: object
  *             properties:
+ *               category:
+ *                 type: string
  *               title:
  *                 type: string
  *               brand:
@@ -41,7 +45,7 @@ const enrollDto = require('../dtos/enrollDto');
 const createEnroll = async (req, res) => {
     try {
         const request = enrollDto.fromRequest_create(req);
-        const enroll = await enrollDao.Create(request.title, request.brand, request.image1, request.image2, request.image3);
+        const enroll = await enrollDao.Create(request.category, request.title, request.brand, request.image1, request.image2, request.image3);
         res.status(200).json(enroll);
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });
