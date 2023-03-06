@@ -11,8 +11,7 @@ const fromRequest_create = (req) => {
 const fromRequest_update = (req) => {
     return {
         ads: req.body.ads,
-        email: req.body.email,
-        token: req.body.token,
+        email: req.body.email
     }
 }
 module.exports = {fromRequest_create, fromRequest_update};
