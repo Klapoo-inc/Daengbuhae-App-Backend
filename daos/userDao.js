@@ -6,7 +6,7 @@ const Create = async (req) => {
 };
 const Update = async (req, Uid) => {
     const user = await User.findByPk(Uid);
-    const data = await user.update({ req});
+    const data = await user.update({ ...req});
     return data;
 };
 module.exports = {Create, Update}

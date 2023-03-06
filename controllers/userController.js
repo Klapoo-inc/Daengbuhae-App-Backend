@@ -64,7 +64,6 @@ const createuser = async (req, res) => {
  *       Uid: 유저 id (필수) <br>
  *       ads: 광고동의 <br>
  *       email: 이메일 <br>
- *       token: firebase토큰 <br>
  *
  *
  *
@@ -82,8 +81,6 @@ const createuser = async (req, res) => {
  *                 type: integer
  *               email:
  *                 type: string
- *               token:
- *                 type: string
  *     responses:
  *       200:
  *         description: Success
@@ -94,7 +91,7 @@ const createuser = async (req, res) => {
 const updateuser = async (req, res) => {
     try {
         const request = userDto.fromRequest_update(req);
-        const pet = await userDao.Update(request, req.Uid);
+        const pet = await userDao.Update(request, req.body.Uid);
         res.status(200).json(pet);
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });
