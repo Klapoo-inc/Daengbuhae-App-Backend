@@ -1,5 +1,6 @@
 const fromRequest_create = (req) => {
     return {
+        category: req.body.category,
         title: req.body.title,
         brand: req.body.brand,
         image1: req.body.image1,

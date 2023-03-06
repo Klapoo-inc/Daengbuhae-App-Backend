@@ -7,6 +7,10 @@ const Enroll = sequelize.define('Enroll', {
         primaryKey: true,
         autoIncrement: true,
     },
+    category: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+    },
     title: {
         type: Sequelize.STRING(128),
         allowNull: false,

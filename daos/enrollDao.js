@@ -1,7 +1,8 @@
 const Enroll = require('../models/enrollModel');
 
-const Create = async (title, brand, image1 = null, image2 = null, image3 = null) => {
+const Create = async (category, title, brand, image1 = null, image2 = null, image3 = null) => {
     const result = await Enroll.create({
+        category: category,
         title: title,
         brand: brand,
         state: 0,
