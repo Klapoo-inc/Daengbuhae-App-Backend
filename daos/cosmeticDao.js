@@ -1,5 +1,6 @@
 const Cosmetic = require('../models/cosmeticModel');
 const { Op } = require('sequelize');
+const Pet = require("../models/petModel");
 
 const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic, filter, page, limit) => {
     const offset = (page - 1) * limit;
@@ -76,5 +77,20 @@ const get = async (Cid) => {
     const data = await Cosmetic.findByPk(Cid);
     return data;
 };
-
-module.exports = { search, get };
+const Create = async (req) => {
+    const result = await Cosmetic.create({
+        ...req,
+        AvgRating:0,
+        read:0
+    });
+    return result;
+};
+const Delete = async (Cid) => {
+    const data = await Cosmetic.findByPk(Cid);
+    if (!data) {
+        return null;
+    }
+    await data.destroy();
+    return data;
+};
+module.exports = { search, get, Create, Delete };

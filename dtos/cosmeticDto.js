@@ -39,5 +39,28 @@ const fromDb_get = (db) => {
         CoupangSrc: db.CoupangSrc,
     };
 };
+const fromRequest_create =(req) => {
+    return {
+        Cid: req.body.Cid,
+        title: req.body.title,
+        brand: req.body.brand,
+        SCategory: req.body.SCategory,
+        BCategory: req.body.BCategory,
+        NInhibition: req.body.NInhibition,
+        NLimit: req.body.NLimit,
+        Allergic: req.body.Allergic,
+        PPH: req.body.PPH,
+        src: req.body.src,
+        CoupnagSrc: req.body.CoupnagSrc,
+        CountFunctional: req.body.CountFunctional,
+        CountRating: req.body.CountRating,
+        CountColor: req.body.CountColor
+    }
+}
+const fromRequest_delete =(req) => {
+    return{
+        Cid: req.query.Cid
+    }
+}
 
-module.exports = { fromRequest_search, fromDb_search, fromRequest_get, fromDb_get };
+module.exports = { fromRequest_search, fromDb_search, fromRequest_get, fromDb_get, fromRequest_create, fromRequest_delete };
