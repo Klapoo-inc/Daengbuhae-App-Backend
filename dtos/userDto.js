@@ -14,4 +14,15 @@ const fromRequest_update = (req) => {
         email: req.body.email
     }
 }
-module.exports = {fromRequest_create, fromRequest_update};
+const fromRequest_delete = (req) => {
+    return {
+        Uid: req.query.Uid
+    };
+};
+const fromRequest_get = (req) => {
+    return {
+        Uid: req.query.Uid
+    };
+};
+
+module.exports = {fromRequest_create, fromRequest_update, fromRequest_delete, fromRequest_get};

@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Pet = require("../models/petModel");
 
 const Create = async (req) => {
     const result = await User.create({...req, maindog: 0, deleted:0});
@@ -9,4 +10,20 @@ const Update = async (req, Uid) => {
     const data = await user.update({ ...req});
     return data;
 };
-module.exports = {Create, Update}
+const Delete = async (Uid) => {
+    const data = await User.findByPk(Uid);
+    if (!data) {
+        return null;
+    }
+    await data.destroy();
+    return data;
+};
+const Get = async (Uid) => {
+    const data = await User.findOne({
+        where: {
+            Uid: Uid,
+        }
+    });
+    return data;
+};
+module.exports = {Create, Update, Delete, Get}
