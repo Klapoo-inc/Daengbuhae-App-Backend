@@ -114,18 +114,21 @@ const getCosmetic = async (req, res) => {
  *     tags:
  *       - 화장품
  *     description:
- *       "Uid: 유저 id (필수) <br>
- *       birth: 생일 (필수) <br>
- *       gender: 성별 <br>
- *       src: 이미지 <br>
- *       kind: 종 <br>
- *       name: 이름 <br>
- *       neutering: 중성화 <br>
- *       vaccination: 백신 <br>
- *       weight: 무게 <br>
- *       allergic: 알레르기 <br>
- *       ill: 질병 <br>
- *       bath: 목욕"
+ *       "Cid: cosmetic id<br>
+ *       title: cosmetic title<br>
+ *       brand: cosmetic brand <br>
+ *       SCategory: cosmetic small category<br>
+ *       BCategory: cosmetic big category<br>
+ *       src: cosmetic image src<br>
+ *       NInhibition: 제한성분 유무<br>
+ *       NLimit: 금지성분 유무<br>
+ *       Allergic: 알러지 유발성분유무<br>
+ *       CountFunctional: 기능성 성분 종류, 개수<br>
+ *       CountRating: 위험 유의 등 성분 개수<br>
+ *       CupangSrc: 쿠팡 구매링크<br>
+ *       CountColor: 성분 위험도 색 개수<br>
+ *       PPH: pph해당 성분 유무<br>
+ *       "
  *     requestBody:
  *       required: true
  *       content:
