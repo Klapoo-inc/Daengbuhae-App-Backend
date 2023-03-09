@@ -1,7 +1,7 @@
 const cosmeticDao = require('../daos/cosmeticDao');
 const cosmeticDto = require('../dtos/cosmeticDto');
-const petDto = require("../dtos/petDto");
-const petDao = require("../daos/petDao");
+const cosmeticingredientDto = require('../dtos/cosmeticingredientDto')
+const cosmeticingredientDao = require('../daos/cosmeticingredientDao')
 
 /**
  * @swagger
@@ -128,6 +128,7 @@ const getCosmetic = async (req, res) => {
  *       CupangSrc: 쿠팡 구매링크<br>
  *       CountColor: 성분 위험도 색 개수<br>
  *       PPH: pph해당 성분 유무<br>
+ *       ingredients: 화장품 성분 리스트
  *       "
  *     requestBody:
  *       required: true
@@ -167,6 +168,10 @@ const getCosmetic = async (req, res) => {
  *                  type: object
  *               CountColor:
  *                  type: object
+ *               ingredients:
+ *                  type: array
+ *                  items:
+ *                      type: integer
  *
  *
  *     responses:
@@ -180,7 +185,9 @@ const createCosmetic = async (req, res) => {
     try {
         const request = cosmeticDto.fromRequest_create(req);
         const pet = await cosmeticDao.Create(request);
-        res.status(200).json(pet);
+        const requestingredient = cosmeticingredientDto.fromRequest_create(req)
+        const cosmeticingredient = cosmeticingredientDao.Create(requestingredient)
+        res.status(200).json({'cosmetic': pet, 'cosmeticingredient':cosmeticingredient});
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
