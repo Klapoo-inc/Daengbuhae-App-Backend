@@ -24,9 +24,20 @@ const fromDb_get = (db) => {
 };
 const fromDb_search = (db) => {
     return {
-        Iid: db.Iid,
         title_en: db.title_en,
-        title_ko: db.title_ko
+        title_ko: db.title_ko,
+        EwgGrade: db.EwgGrade,
+        EwgData: db.EwgData,
+        Rating: db.Rating,
+        Color: db.Color,
+        NInhibition: db.NInhibition,
+        NLimit: db.NLimit,
+        Purpose: db.Purpose,
+        Allergic: db.Allergic,
+        Functional: db.Functional,
+        PPH: db.PPH,
+        ASPCA: db.ASPCA,
+        Iid: db.Iid
     };
 };
 const fromRequest_search = (req) => {
