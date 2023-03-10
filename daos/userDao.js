@@ -2,9 +2,15 @@ const User = require('../models/userModel');
 const Pet = require("../models/petModel");
 
 const Create = async (req) => {
-    const [user, created] = await User.findOrCreate({paranoid:false ,where: {Uid: req.Uid}, defaults: {...req, maindog: 0, deleted:0}});
-    if(created){
-        const result = user.update({...req, deletedAt:null})
+    const [user, created] = await User.findOrCreate({
+        paranoid:false ,
+        where: {Uid: req.Uid},
+        defaults: {...req, maindog: 0, deleted:0}
+    });
+    if(!created){
+        console.log('created')
+        await user.restore()
+        const result = await user.update({...req, maindog: 0, deleted:0})
         return result
     }
     return user;
