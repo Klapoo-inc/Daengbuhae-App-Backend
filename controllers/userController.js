@@ -48,8 +48,8 @@ const petDao = require("../daos/petDao");
 const createuser = async (req, res) => {
     try {
         const request = userDto.fromRequest_create(req);
-        const CosmeticReview = await userDao.Create(request);
-        res.status(200).json(CosmeticReview);
+        const user = await userDao.Create(request);
+        res.status(200).json(user);
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
