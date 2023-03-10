@@ -21,6 +21,8 @@ const AllGet = async (Uid) => {
 
 const Create = async (req) => {
     const result = await Pet.create(req);
+    const user = await User.findByPk(req.Uid)
+    await user.addPet(result)
     return result;
 };
 
