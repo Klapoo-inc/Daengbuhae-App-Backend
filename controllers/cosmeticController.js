@@ -2,6 +2,7 @@ const cosmeticDao = require('../daos/cosmeticDao');
 const cosmeticDto = require('../dtos/cosmeticDto');
 const cosmeticingredientDto = require('../dtos/cosmeticingredientDto')
 const cosmeticingredientDao = require('../daos/cosmeticingredientDao')
+const petDao = require("../daos/petDao");
 
 /**
  * @swagger
@@ -192,6 +193,92 @@ const createCosmetic = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
 };
+/**
+ * @swagger
+ * /cosmetic:
+ *   put:
+ *     summary: 화장품 업데이트
+ *     tags:
+ *       - 화장품
+ *     description:
+ *       "Cid: cosmetic id<br>
+ *       title: cosmetic title<br>
+ *       brand: cosmetic brand <br>
+ *       SCategory: cosmetic small category<br>
+ *       BCategory: cosmetic big category<br>
+ *       src: cosmetic image src<br>
+ *       NInhibition: 제한성분 유무<br>
+ *       NLimit: 금지성분 유무<br>
+ *       Allergic: 알러지 유발성분유무<br>
+ *       CountFunctional: 기능성 성분 종류, 개수<br>
+ *       CountRating: 위험 유의 등 성분 개수<br>
+ *       CupangSrc: 쿠팡 구매링크<br>
+ *       CountColor: 성분 위험도 색 개수<br>
+ *       PPH: pph해당 성분 유무<br>
+ *       ingredients: 화장품 성분 리스트
+ *       "
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *
+ *               Cid:
+ *                  type: integer
+ *               title:
+ *                 type: string
+ *               brand:
+ *                 type: string
+ *               SCategory:
+ *                  type: string
+ *               BCategory:
+ *                  type: string
+ *               src:
+ *                  type: string
+ *                  default: null
+ *               CoupangSrc:
+ *                  type: string
+ *                  default: null
+ *               NInhibition:
+ *                  type: boolean
+ *               NLimit:
+ *                  type: boolean
+ *               Allergic:
+ *                  type: boolean
+ *               PPH:
+ *                  type: boolean
+ *               CountFunctional:
+ *                  type: object
+ *               CountRating:
+ *                  type: object
+ *               CountColor:
+ *                  type: object
+ *               ingredients:
+ *                  type: array
+ *                  items:
+ *                      type: integer
+ *
+ *
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
+
+const updatecosmetic = async (req, res) => {
+    try {
+        const request = cosmeticDto.fromRequest_create(req);
+        const cosmetic = await cosmeticDao.Update(request.Cid, request);
+        const requestingredient = cosmeticingredientDto.fromRequest_create(req)
+        const cosmeticingredient = cosmeticingredientDao.Create(requestingredient)
+        res.status(200).json({'cosmetic': cosmetic, 'cosmeticingredient':cosmeticingredient});
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
 
 /**
  * @swagger
@@ -226,4 +313,4 @@ const deleteCosmetic = async (req, res) => {
     }
 };
 
-module.exports = { searchCosmetics, getCosmetic, createCosmetic, deleteCosmetic };
+module.exports = { searchCosmetics, getCosmetic, createCosmetic, deleteCosmetic, updatecosmetic };

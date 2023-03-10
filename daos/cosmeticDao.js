@@ -93,4 +93,9 @@ const Delete = async (Cid) => {
     await data.destroy();
     return data;
 };
-module.exports = { search, get, Create, Delete };
+const Update = async (Cid, req) => {
+    const cosmetic = await Cosmetic.findByPk(Cid);
+    const result = await cosmetic.update(req);
+    return result;
+};
+module.exports = { search, get, Create, Delete, Update };
