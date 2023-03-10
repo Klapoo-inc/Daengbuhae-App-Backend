@@ -80,7 +80,15 @@ const Cosmetic = sequelize.define('Cosmetic', {
 Cosmetic.addHook('beforeDestroy', async (cosmetic,options)=>{
     await CosmeticIngredient.destroy({ where: { Cid: cosmetic.Cid } });
 })
-Cosmetic.hasMany(CosmeticIngredient, { onDelete: 'CASCADE', onUpdate: 'CASCADE', hooks: true  });
-CosmeticIngredient.belongsTo(Cosmetic, { onDelete: 'CASCADE' });
+Cosmetic.addHook('beforeUpdate', async (cosmetic,options)=>{
+    await CosmeticIngredient.destroy({ where: { Cid: cosmetic.Cid } });
+})
+Cosmetic.hasMany(CosmeticIngredient, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey:'Cid',
+    sourceKey:'Cid',
+    hooks: true  });
+CosmeticIngredient.belongsTo(Cosmetic, { sourceKey:'Cid' ,onDelete: 'CASCADE' });
 
 module.exports = Cosmetic;
