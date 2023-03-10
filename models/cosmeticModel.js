@@ -1,4 +1,5 @@
 const { Sequelize, sequelize } = require('./sequelize');
+const CosmeticIngredient = require('./cosmeticingredientModel')
 
 const Cosmetic = sequelize.define('Cosmetic', {
     Cid: {
@@ -68,7 +69,18 @@ const Cosmetic = sequelize.define('Cosmetic', {
     },
 }, {
   tableName: "Cosmetic",
-    paranoid: true,
+    paranoid: true,},
+{
+    hooks: {
+        beforeDestroy: async (user, options) => {
+
+        }
+    }
 });
+Cosmetic.addHook('beforeDestroy', async (cosmetic,options)=>{
+    await CosmeticIngredient.destroy({ where: { Cid: cosmetic.Cid } });
+})
+Cosmetic.hasMany(CosmeticIngredient, { onDelete: 'CASCADE', onUpdate: 'CASCADE', hooks: true  });
+CosmeticIngredient.belongsTo(Cosmetic, { onDelete: 'CASCADE' });
 
 module.exports = Cosmetic;

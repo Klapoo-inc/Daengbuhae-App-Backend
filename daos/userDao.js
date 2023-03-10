@@ -15,6 +15,10 @@ const Delete = async (Uid) => {
     if (!data) {
         return null;
     }
+    const pets = await data.getPets();
+    // pets.map(async (pet)=>{
+    //     await pet.destroy()
+    // })
     await data.destroy();
     return data;
 };
