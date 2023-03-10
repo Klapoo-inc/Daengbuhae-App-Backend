@@ -9,6 +9,7 @@ const get = async (Cid) => {
         where: {
             Cid: Cid,
         },
+        attributes: ['Iid']
     });
     const data = await Ingredient.findAll({
         where: {
