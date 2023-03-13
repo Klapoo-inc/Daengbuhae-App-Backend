@@ -14,6 +14,7 @@ const reviewimageRouter = require('./routes/reviewimageRouter')
 const usersearchRouter = require('./routes/usersearchRouter')
 const reviewreportRouter = require('./routes/reviewreportRouter')
 const userRouter = require('./routes/userRouter')
+const initialRouter = require('./routes/initialRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -42,6 +43,7 @@ const options = {
 };
 const specs = swaggerJsdoc(options);
 
+app.use('/',initialRouter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/cosmetic', cosmeticRouter);
 app.use('/ingredient', ingredientRouter);
