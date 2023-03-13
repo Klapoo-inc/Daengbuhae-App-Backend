@@ -1,6 +1,8 @@
 const { Sequelize, sequelize } = require('./sequelize');
 const Pet = require('./petModel')
 const UserSearch = require('./usersearchModel')
+const CosmeticReview = require('./cosmeticreviewModel')
+const CosmeticLike = require('./cosmeticlikeModel')
 const User = sequelize.define('User', {
     Uid: {
         type: Sequelize.STRING(128),
@@ -44,6 +46,8 @@ const User = sequelize.define('User', {
 User.addHook('beforeDestroy', async (user,options)=>{
     await Pet.destroy({ where: { Uid: user.Uid } });
     await UserSearch.destroy({ where: { Uid: user.Uid } });
+    await CosmeticReview.destroy({ where: { Uid: user.Uid } });
+    await CosmeticLike.destroy({ where: { Uid: user.Uid } });
 })
 User.hasMany(Pet, { onDelete: 'CASCADE', onUpdate: 'CASCADE', hooks: true  });
 Pet.belongsTo(User, { onDelete: 'CASCADE' });
