@@ -9,9 +9,14 @@ const Create = async (req) => {
     });
     if(!created){
         console.log('created')
-        await user.restore()
-        const result = await user.update({...req, maindog: 0, deleted:0})
-        return result
+        if(user.deletedAt!=null){
+            await user.restore()
+            const result = await user.update({...req, maindog: 0, deleted:0})
+            return result
+        }else{
+            return null
+        }
+
     }
     return user;
 };

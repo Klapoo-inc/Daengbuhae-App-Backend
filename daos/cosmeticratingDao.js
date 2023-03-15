@@ -36,6 +36,7 @@ const Update = async (req, i) => {
         const count = data.rating1+data.rating2+data.rating3+data.rating4+data.rating5+i
         const avr = total/count
         data.avr = avr
+        console.log(data.dataValues)
         if(req.rating==1){
 
             data.rating1 +=i
