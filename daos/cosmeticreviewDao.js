@@ -2,6 +2,8 @@ const CosmeticReview = require('../models/cosmeticreviewModel');
 const { Op } = require('sequelize');
 const Pet = require('../models/petModel');
 const Cosmetic = require('../models/cosmeticModel');
+const CosmeticRatingDto = require("../dtos/cosmeticratingDto");
+const CosmeticRatingDao = require("./cosmeticratingDao");
 
 const Get = async (Cid, Uid, page, limit) => {
     const offset = (page - 1) * limit;
@@ -78,7 +80,11 @@ const Delete = async (Rid) => {
 };
 const Update = async (Rid, req) => {
     const review = await CosmeticReview.findByPk(Rid);
+    const requestrating = CosmeticRatingDto.fromCosmeticRequest_update({body:review.dataValues})
+    const cosmeticrating = await CosmeticRatingDao.Update(requestrating,-1)
     const result = await review.update(req);
-    return result;
+    const requestrating2 = CosmeticRatingDto.fromCosmeticRequest_update({body:result.dataValues})
+    const cosmeticrating2 = await CosmeticRatingDao.Update(requestrating2,1)
+    return {review:result, rating:cosmeticrating2};
 };
 module.exports = {Update, Get, Create, Delete };

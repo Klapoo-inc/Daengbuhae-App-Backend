@@ -1,6 +1,7 @@
 const CosmeticReviewDao = require('../daos/cosmeticreviewDao');
 const CosmeticReviewDto = require('../dtos/cosmeticreviewDto');
-
+const CosmeticRatingDao = require('../daos/cosmeticratingDao');
+const CosmeticRatingDto = require('../dtos/cosmeticratingDto');
 
 /**
  * @swagger
@@ -108,7 +109,9 @@ const createCosmeticReview = async (req, res) => {
     try {
         const request = CosmeticReviewDto.fromRequest_create(req);
         const CosmeticReview = await CosmeticReviewDao.Create(request);
-        res.status(200).json(CosmeticReview);
+        const requestrating = CosmeticRatingDto.fromCosmeticRequest_update(req)
+        const cosmeticrating = await CosmeticRatingDao.Update(requestrating,1)
+        res.status(200).json({review:CosmeticReview, rating:cosmeticrating});
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
@@ -141,7 +144,9 @@ const deleteCosmeticReview = async (req, res) => {
     try {
         const request = CosmeticReviewDto.fromRequest_delete(req);
         const CosmeticReview = await CosmeticReviewDao.Delete(request.Rid);
-        res.status(200).json(CosmeticReview);
+        const requestrating = CosmeticRatingDto.fromCosmeticRequest_update({body:CosmeticReview.dataValues})
+        const cosmeticrating = await CosmeticRatingDao.Update(requestrating,-1)
+        res.status(200).json({review: CosmeticReview, rating: cosmeticrating});
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
@@ -203,6 +208,7 @@ const deleteCosmeticReview = async (req, res) => {
 
 const updateCosmeticReview = async (req, res) => {
     try {
+        //update cosmeticreviewdao안에 ratingupdate 작성함
         const request = CosmeticReviewDto.fromRequest_update(req);
         const review = await CosmeticReviewDao.Update(request.Rid, request);
         res.status(200).json(review);
