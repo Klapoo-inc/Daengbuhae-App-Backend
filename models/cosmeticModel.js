@@ -1,5 +1,6 @@
 const { Sequelize, sequelize } = require('./sequelize');
 const CosmeticIngredient = require('./cosmeticingredientModel')
+const CosmeticRating = require('./cosmeticratingModel')
 
 const Cosmetic = sequelize.define('Cosmetic', {
     Cid: {
@@ -89,6 +90,12 @@ Cosmetic.hasMany(CosmeticIngredient, {
     foreignKey:'Cid',
     sourceKey:'Cid',
     hooks: true  });
+Cosmetic.hasOne(CosmeticRating,{
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    foreignKey:'Cid',
+    sourceKey:'Cid',
+    hooks: true  })
 CosmeticIngredient.belongsTo(Cosmetic, { sourceKey:'Cid' ,onDelete: 'CASCADE' });
 
 module.exports = Cosmetic;
