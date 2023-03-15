@@ -32,7 +32,7 @@ const CosmeticRating = sequelize.define('CosmeticRating', {
             defaultValue:0
         },
         avr:{
-            type: Sequelize.INTEGER,
+            type: Sequelize.DOUBLE,
             allowNull: false,
             defaultValue:0
         }
