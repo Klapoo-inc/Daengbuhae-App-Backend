@@ -14,7 +14,7 @@ const Get = async (Cid, Uid, page, limit) => {
                 Cid: Cid,
                 Uid: Uid
             },
-            order:[['createdAt', 'DESC']],
+            order:[['createdAt', 'ASC']],
             offset,
             limit
         });
