@@ -26,6 +26,7 @@ const Get = async (Cid, Uid, page, limit) => {
             where: {
                 Cid: Cid
             },
+            order:[['createdAt', 'ASC']],
             offset,
             limit
         });
@@ -42,6 +43,7 @@ const Get = async (Cid, Uid, page, limit) => {
             where: {
                 Uid: Uid
             },
+            order:[['createdAt', 'ASC']],
             offset,
             limit
         });
