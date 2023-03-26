@@ -4,7 +4,7 @@ const Cosmetic = require('./models/cosmeticModel')
 
 
 const data1 = JSON.parse(fs.readFileSync("./.data/cosmetic_sql0221.json"));
-
+//ss
 Cosmetic.sync({force: false}).then(() => {
     Cosmetic.bulkCreate(data1).then(() => {
         console.log("Data1 imported successfully");
