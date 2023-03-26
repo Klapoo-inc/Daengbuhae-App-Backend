@@ -4,7 +4,7 @@ on:
     branches:
       - master
 
-jons:
+jobs:
   AUTO_DEPLOY:
     runs-on: ubuntu-latest
     name: Build
