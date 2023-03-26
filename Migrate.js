@@ -1,5 +1,5 @@
 const fs = require('fs');
-//asd
+
 const Cosmetic = require('./models/cosmeticModel')
 
 
