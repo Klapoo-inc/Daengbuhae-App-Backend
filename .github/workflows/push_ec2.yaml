@@ -17,7 +17,7 @@ jons:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          cd Daengbuhae-App-Backend
+          cd Daengbuhae-Backend
           git pull origin master
           ${{ secrets.NAME }}
           ${{ secrets.TOKEN }}
