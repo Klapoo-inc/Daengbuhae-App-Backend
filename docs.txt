@@ -1,0 +1,19 @@
+ppk는 다운 받아서 ssh 연결해서 사용하면 됨
+4:04
+ec2 접속하면 Daengbuhae-Backend 파일 들어가서
+4:04
+git pull origin master
+4:04
+하면 되고
+4:04
+배포할때는 pm2 list 해서 나오는 name
+4:05
+현재는 Klapoo_backend 인데
+4:05
+pm2 reload Klapoo_backend 하면 됨
+4:05
+이게 무중단으로 서버 다시 배포하는거라서
+4:05
+reload 사용하는거고
+4:06
+처음부터 하는 거면 pm2 start ecosystem.config.js 사용하면 됨
