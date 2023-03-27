@@ -18,9 +18,7 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd Daengbuhae-Backend
-            git pull origin master
-            ${{ secrets.NAME }}
-            ${{ secrets.TOKEN }}
+            git pull ssh master
             pm2 reload Klapoo_backend
       - name: Run scripts in server2
         uses: appleboy/ssh-action@master
@@ -31,8 +29,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd Daengbuhae-Backend
-            git pull origin master
-            ${{ secrets.NAME }}
-            ${{ secrets.TOKEN }}
+            git pull ssh master
             pm2 reload Klapoo_backend 
         
