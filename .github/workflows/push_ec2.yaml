@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Build
     steps:
-      - name: Run scripts in server
+      - name: Run scripts in server1
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -21,4 +21,18 @@ jobs:
             git pull origin master
             ${{ secrets.NAME }}
             ${{ secrets.TOKEN }}
+            pm2 reload Klapoo_backend
+      - name: Run scripts in server2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST2 }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd Daengbuhae-Backend
+            git pull origin master
+            ${{ secrets.NAME }}
+            ${{ secrets.TOKEN }}
             pm2 reload Klapoo_backend 
+        
