@@ -60,7 +60,7 @@ const searchT = require('./searchTController')
 const searchCosmetics = async (req, res) => {
     try {
         const request = cosmeticDto.fromRequest_search(req);
-        if(request.Uid) {
+        if(1) {
             await searchT.creatSearchTracking({
                 body: {
                     Uid: request.Uid,
