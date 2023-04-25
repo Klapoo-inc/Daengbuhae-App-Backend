@@ -60,10 +60,14 @@ const searchT = require('./searchTController')
 const searchCosmetics = async (req, res) => {
     try {
         const request = cosmeticDto.fromRequest_search(req);
-        await searchT.creatSearchTracking({body:{
-            Uid: request.Uid,
-            query:request
-            }})
+        if(request.Uid) {
+            await searchT.creatSearchTracking({
+                body: {
+                    Uid: request.Uid,
+                    query: request
+                }
+            })
+        }
         const cosmetics = await cosmeticDao.search(request.title !== undefined ? request.title : "", request.BCategory, request.SCategory, request.NInhibition, request.NLimit, request.Allergic, request.filter, request.page? request.page : 1, request.limit? request.limit : 10);
         const cosmeticsDto = {
             total: cosmetics.total,
