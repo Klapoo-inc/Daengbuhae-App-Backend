@@ -1,5 +1,6 @@
 const fromRequest_search = (req) => {
     return {
+        Uid: req.body.Uid? req.body.Uid:null,
         title: req.body.title,
         SCategory: req.body.SCategory,
         BCategory: req.body.BCategory,

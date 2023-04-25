@@ -6,6 +6,7 @@ const sequelize = new Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
     host: DB_HOST,
     dialect: 'mysql',
     port: 3306,
+    timezone: '+09:00'
 });
 
 module.exports = { Sequelize, sequelize };

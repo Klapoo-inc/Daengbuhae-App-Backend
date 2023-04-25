@@ -3,7 +3,9 @@ const AllGet = async (Uid) => {
     const data = await UserSearch.findAll({
         where: {
             Uid: Uid
-        }
+        },
+        limit:10,
+        order:[['createdAt', 'DESC']],
     });
     return data;
 };
