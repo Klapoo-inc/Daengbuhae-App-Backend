@@ -3,7 +3,7 @@ const fs = require('fs');
 const Cosmetic = require('./models/cosmeticModel')
 
 
-const data1 = JSON.parse(fs.readFileSync("./.data/cosmetic_sql0221.json"));
+const data1 = JSON.parse(fs.readFileSync("./.data/cosmetic_sql0503.json"));
 //ssas
 Cosmetic.sync({force: false}).then(() => {
     Cosmetic.bulkCreate(data1).then(() => {

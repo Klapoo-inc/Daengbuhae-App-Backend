@@ -19,6 +19,7 @@ const fromDb_search = (db) => {
         title: db.title,
         brand: db.brand,
         src: db.src,
+        CountFunctional: db.CountFunctional
     };
 };
 
@@ -38,6 +39,12 @@ const fromDb_get = (db) => {
         AvgRating: db.AvgRating,
         read: db.read,
         CoupangSrc: db.CoupangSrc,
+        texture: db.texture,
+        effect: db.effect,
+        use: db.use,
+        method: db.method,
+        note: db.note
+
     };
 };
 const fromRequest_create =(req) => {

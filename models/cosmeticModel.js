@@ -68,6 +68,27 @@ const Cosmetic = sequelize.define('Cosmetic', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    texture: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+    },
+    effect: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+    },
+    use: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+    },
+    method: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+    },
+    note: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+    },
+
 }, {
   tableName: "Cosmetic",
     paranoid: true,},
