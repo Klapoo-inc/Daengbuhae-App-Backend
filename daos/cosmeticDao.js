@@ -54,9 +54,9 @@ const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic
         });
     }
     if (filter && filter.length > 0) {
-        let filter_query = {[Op.or]: []};
+        let filter_query = {[Op.and]: []};
         for (const item of filter) {
-            filter_query[Op.or].push({
+            filter_query[Op.and].push({
                 ['CountFunctional.' + item]: {
                     [Op.ne]: 0
                 }
