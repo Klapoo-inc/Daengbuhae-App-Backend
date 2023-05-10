@@ -5,8 +5,8 @@ const versionCheck = async (req, res) => {
             android: '1',
             ios:'1'
         }
-        const version = req.body.version
-        const device = req.body.device
+        const version = req.query.version
+        const device = req.query.device
         if(appversion[device]==version){
             const result=true
             res.status(200).json(result);
