@@ -1,9 +1,12 @@
 const Cosmetic = require('../models/cosmeticModel');
 const { Op } = require('sequelize');
 const Pet = require("../models/petModel");
+const {list} = require("pm2");
 
 const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic, filter, page, limit) => {
     const offset = (page - 1) * limit;
+
+    const filterlist =Object.keys(filterdict)
     const query = {
       [Op.and]: [
           {
@@ -56,11 +59,27 @@ const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic
     if (filter && filter.length > 0) {
         let filter_query = {[Op.and]: []};
         for (const item of filter) {
-            filter_query[Op.and].push({
-                ['CountFunctional.' + item]: {
-                    [Op.ne]: 0
+            //이전버전에는 지금 작성된 필터가 없기 때문에 오류를 뱉음, 그래서 dict의 key로 확인하는 부분이 필요함
+            if(typeof item === 'object'){
+                let orlist={[Op.or]: []}
+                for (const filteritem of item){
+
+                    orlist[Op.or].push({
+                        ['CountFunctional.' + filteritem]: {
+                            [Op.ne]: 0
+                        }
+                    })
                 }
-            });
+                filter_query[Op.and].push(orlist)
+
+            }else{
+                filter_query[Op.and].push({
+                    ['CountFunctional.' + item]: {
+                        [Op.ne]: 0
+                    }
+                });
+            }
+
         }
         query[Op.and].push(filter_query);
     }

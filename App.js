@@ -18,6 +18,7 @@ const cosmeticratingRouter = require('./routes/cosmeticratingRouter')
 const initialRouter = require('./routes/initialRouter')
 const cosmeticimageRouter = require('./routes/cosmeticimageRouter')
 const trackingRouter = require('./routes/trackingRouter')
+const versioncheckRouter = require('./routes/versioncheckRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -65,6 +66,7 @@ app.use('/reviewreport', reviewreportRouter);
 app.use('/cosmeticrating', cosmeticratingRouter);
 app.use('/cosmetic-image', cosmeticimageRouter);
 app.use('/tracking', trackingRouter)
+app.use('/versioncheck', versioncheckRouter)
 
 sequelize.authenticate()
     .then(() => {
