@@ -6,7 +6,7 @@ const {list} = require("pm2");
 const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic, filter, page, limit) => {
     const offset = (page - 1) * limit;
 
-    const filterlist =Object.keys(filterdict)
+
     const query = {
       [Op.and]: [
           {
