@@ -2,7 +2,7 @@
 const versionCheck = async (req, res) => {
     try {
         const appversion={
-            android: '8',
+            android: '7',
             ios:'7'
         }
         const version = req.query.version
