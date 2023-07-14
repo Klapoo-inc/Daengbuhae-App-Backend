@@ -96,6 +96,17 @@ const get = async (Cid) => {
     const data = await Cosmetic.findByPk(Cid);
     return data;
 };
+
+const getList = async (Cid) => {
+    const cosmetic = await Cosmetic.findAll({
+        where: {
+            [Op.or]: Cid.map((value, index, array) => {
+                return { Cid: value };
+            })
+        },
+    });
+    return cosmetic
+}
 const Create = async (req) => {
     const result = await Cosmetic.create({
         ...req,
@@ -117,4 +128,4 @@ const Update = async (Cid, req) => {
     const result = await cosmetic.update(req);
     return result;
 };
-module.exports = { search, get, Create, Delete, Update };
+module.exports = { search, get, Create, Delete, Update ,getList};

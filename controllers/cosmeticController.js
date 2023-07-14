@@ -117,6 +117,42 @@ const getCosmetic = async (req, res) => {
 
 /**
  * @swagger
+ * /cosmetic/getlist:
+ *   post:
+ *     summary: 화장품 상세조회
+ *     tags:
+ *       - 화장품
+ *     description:
+ *       "Cid : cosmetic ID 값 (필수)"
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               Cid:
+ *                 type: [integer]
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
+
+const getListCosmetic = async (req, res) => {
+    try {
+        const request = cosmeticDto.fromRequest_get(req);
+        const cosmeticDetail = await cosmeticDao.getList(request.Cid);
+        const cosmeticDetailDto = cosmeticDetail.map(cosmeticDto.fromDb_search);
+        res.status(200).json(cosmeticDetailDto);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
+
+/**
+ * @swagger
  * /cosmetic/create:
  *   post:
  *     summary: 화장품등록
@@ -321,4 +357,4 @@ const deleteCosmetic = async (req, res) => {
     }
 };
 
-module.exports = { searchCosmetics, getCosmetic, createCosmetic, deleteCosmetic, updatecosmetic };
+module.exports = { searchCosmetics, getCosmetic, createCosmetic, deleteCosmetic, updatecosmetic, getListCosmetic };
