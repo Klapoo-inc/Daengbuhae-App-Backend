@@ -28,8 +28,7 @@ const fromRequest_cosmetic_get =(req)=>{
 const fromRequest_create = (req) => {
     return {
         Uid: req.body.Uid,
-        PDid: req.body.PDid,
-        quentity: req.body.quentity
+        products: req.body.products,
     };
 };
 

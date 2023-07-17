@@ -11,8 +11,7 @@ const basketDto = require('../dtos/basketDto')
  *     description:
  *       "
  *       Uid: userid,
- *       PDid: productid,
- *       quentity: 수량
+ *       products: 제품 [{PDid: ㅁㅁ, quentity: ㅁㅁ}]
  *
  *       "
  *     requestBody:
@@ -24,10 +23,10 @@ const basketDto = require('../dtos/basketDto')
  *             properties:
  *               Uid:
  *                 type: string
- *               quentity:
- *                 type: integer
- *               PDid:
- *                 type: integer
+ *               products:
+ *                 type: array
+ *                 items:
+ *                    type: object
  *
  *     responses:
  *       200:

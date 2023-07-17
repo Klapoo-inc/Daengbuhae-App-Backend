@@ -1,12 +1,13 @@
 const Basket = require('../models/payments/basketModel');
 
 const Create = async (req) => {
-
-    const result = await Basket.create({
-        PDid: req.PDid,
-        Uid: req.Uid,
-        quentity: req.quentity
-    });
+    const result = req.products.map(async(value)=> {
+        await Basket.create({
+            PDid: value.PDid,
+            Uid: req.Uid,
+            quentity: value.quentity
+        });
+    })
     return result;
 };
 
