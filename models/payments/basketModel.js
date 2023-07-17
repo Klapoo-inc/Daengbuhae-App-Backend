@@ -1,19 +1,23 @@
 const { Sequelize, sequelize } = require('../sequelize');
 
 const Basket = sequelize.define('Basket', {
-    Pid: {
+    Bid: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
     },
-    read: {
+    Uid: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+    },
+    PDid: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    src: {
-        type: Sequelize.STRING(255),
-        allowNull: true,
+    quentity: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
     },
 }, {
     tableName: "Basket",
