@@ -1,5 +1,5 @@
 const { Sequelize, sequelize } = require('../sequelize');
-
+const Basket = require('./basketModel')
 const Product = sequelize.define('Product', {
     PDid: {
         type: Sequelize.INTEGER,
@@ -49,4 +49,6 @@ const Product = sequelize.define('Product', {
     paranoid: true,
 });
 
+Product.hasMany(Basket, { foreignKey: 'PDid', targetKey: 'PDid' });
+Basket.belongsTo(Product, { foreignKey: 'PDid', sourceKey: 'PDid' });
 module.exports = Product;
