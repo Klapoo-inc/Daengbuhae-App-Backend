@@ -1,5 +1,6 @@
 const Basket = require('../models/payments/basketModel');
-
+const Cosmetic = require('../models/cosmeticModel');
+const Product = require('../models/payments/productModel')
 const Create = async (req) => {
     const result = req.products.map(async(value)=> {
         await Basket.create({
@@ -19,6 +20,9 @@ const Search = async (req)=>{
         where: {
             Uid: req.Uid,
         },
+        include:[{
+           model: Product,
+        }],
         offset,
         limit,
     });

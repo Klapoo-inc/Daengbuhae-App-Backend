@@ -1,4 +1,5 @@
 const { Sequelize, sequelize } = require('../sequelize');
+const Product = require('./productModel')
 
 const Basket = sequelize.define('Basket', {
     Bid: {
