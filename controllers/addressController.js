@@ -36,7 +36,7 @@ const addressDto = require('../dtos/addressDto')
  *               postnum:
  *                 type: integer
  *               phonenumber:
- *                 type: integer
+ *                 type: string
  *
  *     responses:
  *       200:
