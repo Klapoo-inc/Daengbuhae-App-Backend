@@ -21,6 +21,7 @@ const trackingRouter = require('./routes/trackingRouter')
 const versioncheckRouter = require('./routes/versioncheckRouter')
 const productRouter = require('./routes/productRouter')
 const basketRouter = require('./routes/basketRouter')
+const addressRouter = require('./routes/addressRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -71,6 +72,7 @@ app.use('/tracking', trackingRouter)
 app.use('/versioncheck', versioncheckRouter)
 app.use('/product', productRouter)
 app.use('/basket', basketRouter)
+app.use('/address', addressRouter)
 
 
 sequelize.authenticate()
