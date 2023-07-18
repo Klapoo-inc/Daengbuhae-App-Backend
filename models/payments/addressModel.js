@@ -28,7 +28,7 @@ const Address = sequelize.define('Address', {
         allowNull: false,
     },
     phonenumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(255),
         allowNull: false,
     }
 }, {
