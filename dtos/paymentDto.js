@@ -18,14 +18,12 @@ const fromRequest_cosmetic_get =(req)=>{
 
 const fromRequest_create = (req) => {
     return {
-        title: req.body.title,
-        src: req.body.src,
-        Storeid: req.body.Storeid,
-        price: req.body.price,
-        saleprice: req.body.saleprice,
         state: req.body.state,
-        quentity: req.body.quentity,
-        Cid: req.body.Cid,
+        Aid: req.body.Aid,
+        Uid : req.body.Uid,
+        amount : req.body.amount,
+        imp_uid: req.body.imp_uid,
+        merchant_uid: req.body.merchant_uid
     };
 };
 
