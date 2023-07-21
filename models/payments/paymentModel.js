@@ -1,20 +1,36 @@
 const { Sequelize, sequelize } = require('../sequelize');
 
 const Payment = sequelize.define('Payment', {
-    Pid: {
+    PMid: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
     },
-    read: {
+    state: {
+        type: Sequelize.STRING(45),
+        allowNull: true,
+    },
+    Aid: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-    src: {
-        type: Sequelize.STRING(255),
-        allowNull: true,
+    Uid: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
     },
+    amount: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+    imp_uid: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+    },
+    merchant_uid: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+    }
 }, {
     tableName: "Payment",
     paranoid: true,

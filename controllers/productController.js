@@ -1,7 +1,5 @@
 const productDao = require('../daos/ProductDao')
 const productDto = require('../dtos/productDto')
-const petDto = require("../dtos/petDto");
-const petDao = require("../daos/petDao");
 
 /**
  * @swagger

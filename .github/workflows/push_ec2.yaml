@@ -30,5 +30,6 @@ jobs:
           script: |
             cd Daengbuhae-Backend
             git pull ssh master
+            npm i
             pm2 reload Klapoo_backend 
         
