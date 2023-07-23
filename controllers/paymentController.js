@@ -53,9 +53,13 @@ const createPayment = async (req, res) => {
     try {
         const request = paymentDto.fromRequest_create(req);
         const check = await iamport.paymentCheck(request)
-        console.log(check)
-        const enroll = await paymentDao.Create(request);
-        res.status(200).json(enroll);
+        if(check['success']){
+            const payment = await paymentDao.Create(request);
+
+            res.status(200).json(payment);
+        }else{
+            res.status(400).json({ message: 'Internal Server Error', check:check });
+        }
     } catch (error) {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
