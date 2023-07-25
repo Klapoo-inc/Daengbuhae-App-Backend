@@ -7,14 +7,6 @@ const Payment = sequelize.define('Payment', {
         primaryKey: true,
         autoIncrement: true,
     },
-    state: {
-        type: Sequelize.STRING(45),
-        allowNull: true,
-    },
-    Aid: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-    },
     Uid: {
         type: Sequelize.STRING(128),
         allowNull: false,

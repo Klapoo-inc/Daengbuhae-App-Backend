@@ -19,6 +19,10 @@ const PaymentDetail = sequelize.define('PaymentDetail', {
         type: Sequelize.INTEGER,
         allowNull: true
     },
+    quentity:{
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
     delivery_uid:{
         type: Sequelize.INTEGER,
         allowNull: true,
@@ -31,6 +35,10 @@ const PaymentDetail = sequelize.define('PaymentDetail', {
         type: Sequelize.STRING(128),
         allowNull: false,
     },
+    date:{
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+    }
 }, {
     tableName: "PaymentDetail",
     paranoid: true,
