@@ -1,6 +1,7 @@
 const PaymentDetail = require('../models/payments/paymentDetailModel');
 const Product = require("../models/payments/productModel");
-const Payment = require("../models/payments/paymentModel")
+const Payment = require("../models/payments/paymentModel");
+const Delivery = require("../models/payments/deliveryModel");
 
 const Create = async (req, PMid, delivery_uid) => {
 
@@ -20,7 +21,11 @@ const SearchByUser = async (Uid) => {
         },
         include:[{
             model: Product,
-        }]
+        },{
+            model: Delivery,
+        }],
+
+        order: [['createdAt', 'DESC']],
     });
     return { data: data.rows, total: data.count }
 };
