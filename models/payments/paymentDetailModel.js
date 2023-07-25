@@ -38,6 +38,10 @@ const PaymentDetail = sequelize.define('PaymentDetail', {
     date:{
         type: Sequelize.DATEONLY,
         allowNull: false,
+    },
+    price:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
     }
 }, {
     tableName: "PaymentDetail",

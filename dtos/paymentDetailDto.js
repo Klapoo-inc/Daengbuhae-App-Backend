@@ -1,6 +1,11 @@
+const fromRequest_get_by_user = (req) => {
+    return {
+        Uid: req.query.Uid
+    };
+};
 const fromRequest_get = (req) => {
     return {
-        PDid: req.PDid
+        PMDid: req.query.PMDid
     };
 };
 
@@ -25,7 +30,8 @@ const fromRequest_create = (req) => {
         Uid: req.body.Uid,
         state: 'ready',
         quentity: req.body.quentity?req.body.quentity:req.quentity,
-        date: dt
+        date: dt,
+        price: req.body.price?req.body.price:req.price
     };
 };
 
@@ -50,4 +56,4 @@ const fromRequest_delete = (req) => {
     };
 };
 
-module.exports = { fromRequest_get, fromDb_get, fromRequest_create, fromRequest_delete, fromRequest_update,fromRequest_cosmetic_get };
+module.exports = { fromRequest_get_by_user,fromRequest_get, fromDb_get, fromRequest_create, fromRequest_delete, fromRequest_update,fromRequest_cosmetic_get };
