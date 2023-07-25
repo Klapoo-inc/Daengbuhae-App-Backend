@@ -21,7 +21,7 @@ const paymentDetailDto = require('../dtos/paymentDetailDto')
  *       imp_uid: iamport 결제id
  *       merchant_uid: iamport 주문id
  *       price: 결제금액
- *       products: 제품 [{PDid: ㅁㅁ, quentity: ㅁㅁ, Storeid: ㅁㅁ}]
+ *       products: 제품 [{PDid: ㅁㅁ, quentity: ㅁㅁ, Storeid: ㅁㅁ, price:ㅁㅁ}]
  *
  *       "
  *     requestBody:
@@ -58,6 +58,7 @@ const createPayment = async (req, res) => {
         const paymentreq = paymentDto.fromRequest_create(req);
         const check = await iamport.paymentCheck(paymentreq)
         const products = req.body.products
+        const product_num = products.length
         if(check['success']){
         // if(true){
             const productDict = {}
@@ -93,5 +94,67 @@ const createPayment = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
 };
+/**
+ * @swagger
+ * /payment/user:
+ *   get:
+ *     summary: 각 유저의 payment 정보 조회
+ *     tags:
+ *       - payment
+ *     description:
+ *       "Uid: user id (필수)"
+ *     parameters:
+ *       - name: Uid
+ *         description: user id
+ *         in: query
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
 
-module.exports = {createPayment};
+const searchPaymentByUser = async (req, res) => {
+    try {
+        const request = paymentDetailDto.fromRequest_get_by_user(req);
+        const user = await paymentDetailDao.SearchByUser(request.Uid);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
+/**
+ * @swagger
+ * /payment:
+ *   get:
+ *     summary: payment 정보조회
+ *     tags:
+ *       - payment
+ *     description:
+ *       "PMDid: paymentDetail id (필수)"
+ *     parameters:
+ *
+ *       - name: PMDid
+ *         description: paymentDetail id
+ *         in: query
+ *         required: true
+ *         type: int
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
+
+const getPayment = async (req, res) => {
+    try {
+        const request = paymentDetailDto.fromRequest_get(req);
+        const user = await paymentDetailDao.Get(request);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
+module.exports = {createPayment, searchPaymentByUser, getPayment};
