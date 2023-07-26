@@ -22,8 +22,6 @@ const SearchByUser = async (Uid) => {
         include:[{
             model: Product,
         },{
-            model: Payment,
-        },{
             model: Delivery,
         }],
         group:['delivery_uid'],
