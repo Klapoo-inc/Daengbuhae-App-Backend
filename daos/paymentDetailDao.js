@@ -23,6 +23,8 @@ const SearchByUser = async (Uid) => {
             model: Product,
         },{
             model: Delivery,
+        },{
+            model: Payment,
         }],
 
         order: [['createdAt', 'DESC']],
