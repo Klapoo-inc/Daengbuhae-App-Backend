@@ -16,4 +16,9 @@ const Search = async (req)=>{
     return { data: data.rows, total: data.count }
 }
 
-module.exports = { Create, Search };
+const Get = async  (req)=>{
+    const data = await  Address.findByPk(req.Aid)
+    return data
+}
+
+module.exports = { Create, Search , Get};

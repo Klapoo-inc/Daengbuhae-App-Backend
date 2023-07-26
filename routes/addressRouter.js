@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.post('/', addresscontroller.createAddress);
 router.post('/user', addresscontroller.getuseraddresss)
+router.get('/', addresscontroller.getAddress)
 
 module.exports = router;

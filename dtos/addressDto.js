@@ -1,8 +1,6 @@
 const fromRequest_get = (req) => {
     return {
-        Uid: req.query.Uid,
-        page: req.query.page,
-        limit: req.query.limit,
+        Aid: req.query.Aid
     };
 };
 
