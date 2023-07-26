@@ -24,7 +24,6 @@ const SearchByUser = async (Uid) => {
         },{
             model: Delivery,
         }],
-        group:['delivery_uid'],
 
         order: [['createdAt', 'DESC']],
     });
