@@ -92,5 +92,36 @@ const getuseraddresss = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
 };
+/**
+ * @swagger
+ * /address:
+ *   get:
+ *     summary: address 정보조회
+ *     tags:
+ *       - address
+ *     description:
+ *       "Aid: address id (필수)"
+ *     parameters:
+ *
+ *       - name: Aid
+ *         description: Aid id
+ *         in: query
+ *         required: true
+ *         type: int
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
 
-module.exports = { createAddress,  getuseraddresss};
+const getAddress = async (req, res) => {
+    try {
+        const request = addressDto.fromRequest_get(req);
+        const user = await addressDao.Get(request);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+};
+module.exports = { createAddress,  getuseraddresss, getAddress};
