@@ -2,6 +2,7 @@ const PaymentDetail = require('../models/payments/paymentDetailModel');
 const Product = require("../models/payments/productModel");
 const Payment = require("../models/payments/paymentModel");
 const Delivery = require("../models/payments/deliveryModel");
+const Store = require("../models/payments/storeModel")
 
 const Create = async (req, PMid, delivery_uid) => {
 
@@ -21,6 +22,9 @@ const SearchByUser = async (Uid) => {
         },
         include:[{
             model: Product,
+            include: [{
+                model:Store
+            }]
         },{
             model: Delivery,
         },{
@@ -35,10 +39,13 @@ const Get = async (req) => {
     const data = await PaymentDetail.findByPk(req.PMDid,{
         include:[{
             model: Product,
-        },{
-            model: Payment,
+            include: [{
+                model:Store
+            }]
         },{
             model: Delivery,
+        },{
+            model: Payment,
         }],
     });
     return data
