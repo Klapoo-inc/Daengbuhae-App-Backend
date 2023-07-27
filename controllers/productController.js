@@ -43,6 +43,8 @@ const productDto = require('../dtos/productDto')
  *                 type: integer
  *               Cid:
  *                 type: integer
+ *               refund:
+ *                 type: boolean
  *
  *     responses:
  *       200:

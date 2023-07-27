@@ -20,6 +20,11 @@ const Delivery = sequelize.define('Delivery', {
         type: Sequelize.STRING(128),
         allowNull: false,
     },
+    delivery_fee: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    },
 }, {
     tableName: "Delivery",
     paranoid: true,

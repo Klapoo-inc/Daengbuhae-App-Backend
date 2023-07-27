@@ -16,12 +16,14 @@ const paymentDetailDto = require('../dtos/paymentDetailDto')
  *       - payment
  *     description:
  *       "
- *       Uid: userid,
- *       Aid: addressid,
- *       imp_uid: iamport 결제id
- *       merchant_uid: iamport 주문id
- *       price: 결제금액
- *       products: 제품 [{PDid: ㅁㅁ, quentity: ㅁㅁ, Storeid: ㅁㅁ, price:ㅁㅁ}]
+ *       Uid: userid, \n
+ *       Aid: addressid, \n
+ *       imp_uid: iamport 결제id \n
+ *       merchant_uid: iamport 주문id \n
+ *       price: 결제금액 \n
+ *       products: 제품 [{PDid: ㅁㅁ, quentity: ㅁㅁ, Storeid: ㅁㅁ, price:ㅁㅁ}] \n
+ *       delivery_fee: 배송비 \n
+ *       payMethod: 결제방법 \n
  *
  *       "
  *     requestBody:
@@ -45,6 +47,10 @@ const paymentDetailDto = require('../dtos/paymentDetailDto')
  *                 type: string
  *               amount:
  *                 type: integer
+ *               delivery_fee:
+ *                 type: integer
+ *               payMethod:
+ *                 type: string
  *
  *     responses:
  *       200:

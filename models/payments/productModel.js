@@ -42,7 +42,11 @@ const Product = sequelize.define('Product', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
-
+    refund: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+    },
 
 }, {
     tableName: "Product",

@@ -24,6 +24,7 @@ const basketRouter = require('./routes/basketRouter')
 const addressRouter = require('./routes/addressRouter')
 const iamportRouter = require('./routes/iamport')
 const paymentRouter = require('./routes/paymentRouter')
+const storeRouter = require('./routes/storeRouter')
 const { sequelize } = require('./models/sequelize');
 const swaggerJsdoc = require("swagger-jsdoc");
 const bodyParser = require('body-parser');
@@ -77,6 +78,7 @@ app.use('/basket', basketRouter)
 app.use('/address', addressRouter)
 // app.use('/iamport', iamportRouter)
 app.use('/payment', paymentRouter)
+app.use('/store', storeRouter)
 
 
 sequelize.authenticate()

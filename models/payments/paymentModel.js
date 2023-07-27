@@ -22,7 +22,12 @@ const Payment = sequelize.define('Payment', {
     merchant_uid: {
         type: Sequelize.STRING(128),
         allowNull: false,
-    }
+    },
+    payMethod: {
+        type: Sequelize.STRING(128),
+        allowNull: false,
+        defaultValue: 0
+    },
 }, {
     tableName: "Payment",
     paranoid: true,
