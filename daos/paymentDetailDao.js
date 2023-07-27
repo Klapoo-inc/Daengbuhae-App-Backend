@@ -22,9 +22,6 @@ const SearchByUser = async (Uid) => {
         },
         include:[{
             model: Product,
-            include: [{
-                model:Store
-            }]
         },{
             model: Delivery,
         },{
