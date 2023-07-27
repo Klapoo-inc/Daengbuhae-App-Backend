@@ -26,6 +26,7 @@ const fromRequest_create = (req) => {
         state: req.body.state,
         quentity: req.body.quentity,
         Cid: req.body.Cid,
+        refund: req.body.refund
     };
 };
 

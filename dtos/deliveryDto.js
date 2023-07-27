@@ -19,7 +19,8 @@ const fromRequest_cosmetic_get =(req)=>{
 const fromRequest_create = (req) => {
     return {
         Aid: req.body.Aid,
-        Uid: req.body.Uid
+        Uid: req.body.Uid,
+        delivery_fee: req.body.delivery_fee
     };
 };
 
