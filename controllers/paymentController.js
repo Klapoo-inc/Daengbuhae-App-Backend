@@ -81,8 +81,8 @@ const createPayment = async (req, res) => {
             }
             const keylist = Object.keys(productDict)
             const payment = await paymentDao.Create(paymentreq)
-            const deliveryReq = deliveryDto.fromRequest_create(req);
             const deliveryPaymentDetailList = await Promise.all(keylist.map(async (e)=> {
+                const deliveryReq = deliveryDto.fromRequest_create({...req,...e[[0]]});
                 return  await deliveryDao.Create(deliveryReq).then(async (delivery)=>{
                     const paymentDetailList = await Promise.all(productDict[e].map(  (product)=>{
                         const paymentDetailReq = paymentDetailDto.fromRequest_create({...req, ...product});
