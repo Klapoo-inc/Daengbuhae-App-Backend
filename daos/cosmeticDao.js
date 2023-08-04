@@ -2,7 +2,7 @@ const Cosmetic = require('../models/cosmeticModel');
 const { Op } = require('sequelize');
 const Pet = require("../models/petModel");
 const {list} = require("pm2");
-
+//1
 const search = async (title, BCategory, SCategory, NInhibition, NLimit, Allergic, filter, page, limit) => {
     const offset = (page - 1) * limit;
 
