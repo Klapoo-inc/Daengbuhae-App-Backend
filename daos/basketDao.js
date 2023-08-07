@@ -30,5 +30,19 @@ const Search = async (req)=>{
     });
     return { data: data.rows, total: data.count }
 }
+const Delete = async (req)=>{
+    const basket = await Basket.findByPk(req.Bid)
+    const data = await basket.destroy()
+    return data
+}
+const DeleteList = async (req)=>{
+    const data =  await Promise.all(req.Bid.map(async (e)=>{
+        const basket = await Basket.findByPk(e)
+        const data = await basket.destroy()
+        return data
+    }))
 
-module.exports = { Create, Search };
+    return data
+}
+
+module.exports = { Create, Search, Delete, DeleteList };
