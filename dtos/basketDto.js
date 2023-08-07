@@ -24,7 +24,11 @@ const fromRequest_cosmetic_get =(req)=>{
         Cid: req.query.Cid,
     }
 }
-
+const fromRequest_delete =(req)=>{
+    return {
+        Bid: req.body.Bid?req.body.Bid:req.query.Bid,
+    }
+}
 const fromRequest_create = (req) => {
     return {
         Uid: req.body.Uid,
@@ -34,4 +38,4 @@ const fromRequest_create = (req) => {
 
 
 
-module.exports = { fromRequest_get, fromDb_get, fromRequest_create,fromRequest_cosmetic_get, fromRequest_search };
+module.exports = { fromRequest_get, fromDb_get, fromRequest_create,fromRequest_cosmetic_get, fromRequest_search, fromRequest_delete };
