@@ -3,6 +3,7 @@ const Product = require("../models/payments/productModel");
 const Payment = require("../models/payments/paymentModel");
 const Delivery = require("../models/payments/deliveryModel");
 const Store = require("../models/payments/storeModel")
+const Address = require("../models/payments/addressModel")
 
 const Create = async (req, PMid, delivery_uid) => {
 
@@ -24,6 +25,9 @@ const SearchByUser = async (Uid) => {
             model: Product,
         },{
             model: Delivery,
+            include: [{
+                model:Address
+            }]
         },{
             model: Payment,
         }],

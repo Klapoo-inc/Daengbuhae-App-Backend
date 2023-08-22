@@ -30,6 +30,6 @@ const Delivery = sequelize.define('Delivery', {
     paranoid: true,
 });
 Address.hasMany(Delivery, { foreignKey: 'Aid', targetKey: 'Aid' });
-Address.belongsTo(Delivery, { foreignKey: 'Aid', sourceKey: 'Aid' });
+Delivery.belongsTo(Address, { foreignKey: 'Aid', sourceKey: 'Aid' });
 
 module.exports = Delivery;
