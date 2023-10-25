@@ -163,4 +163,46 @@ const getPayment = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error', error });
     }
 };
-module.exports = {createPayment, searchPaymentByUser, getPayment};
+
+/**
+ * @swagger
+ * /payment:
+ *   put:
+ *     summary: payment 업데이트
+ *     tags:
+ *       - payment
+ *     description:
+ *       "
+ *       PMDid: 결제아이디
+ *       state: 변경할 state
+ *
+ *       "
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               PMDid:
+ *                 type: integer
+ *               state:
+ *                 type: string
+ *
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal Server Error
+ */
+const updatePaymentDetail = async (req, res) =>{
+    try {
+        const request = paymentDetailDto.fromRequest_update(req);
+        console.log(request)
+        const user = await paymentDetailDao.Update(request);
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error', error });
+    }
+}
+module.exports = {createPayment, searchPaymentByUser, getPayment, updatePaymentDetail};

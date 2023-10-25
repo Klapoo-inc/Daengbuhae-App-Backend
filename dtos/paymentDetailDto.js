@@ -8,6 +8,12 @@ const fromRequest_get = (req) => {
         PMDid: req.query.PMDid
     };
 };
+const fromRequest_update= req =>{
+    return {
+        PMDid: req.body.PMDid,
+        state: req.body.state
+    }
+}
 
 const fromDb_get = (db) => {
     return {
@@ -35,25 +41,11 @@ const fromRequest_create = (req) => {
     };
 };
 
-const fromRequest_update = (req) => {
 
-    return {
-        PDid: req.PDid,
-        title: req.title,
-        src: req.src,
-        Storeid: req.Storeid,
-        price: req.price,
-        saleprice: req.saleprice,
-        state: req.state,
-        quentity: req.quentity,
-        Cid: req.Cid,
-
-    };
-};
 const fromRequest_delete = (req) => {
     return {
         PDid: req.PDid
     };
 };
 
-module.exports = { fromRequest_get_by_user,fromRequest_get, fromDb_get, fromRequest_create, fromRequest_delete, fromRequest_update,fromRequest_cosmetic_get };
+module.exports = { fromRequest_get_by_user,fromRequest_get, fromDb_get, fromRequest_create, fromRequest_delete,fromRequest_update, fromRequest_cosmetic_get };

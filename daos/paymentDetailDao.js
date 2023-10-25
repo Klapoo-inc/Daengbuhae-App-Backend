@@ -51,5 +51,10 @@ const Get = async (req) => {
     });
     return data
 };
+const Update = async  (req)=>{
+    const data = await PaymentDetail.findByPk(req.PMDid)
+    const updateData = await data.update({state: req.state})
+    return updateData
+}
 
-module.exports = { Create, SearchByUser, Get };
+module.exports = { Create, SearchByUser, Get, Update };
