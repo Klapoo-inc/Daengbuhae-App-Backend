@@ -25,6 +25,11 @@ const Delivery = sequelize.define('Delivery', {
         allowNull: false,
         defaultValue: 0
     },
+    state:{
+        type: Sequelize.STRING,
+        allowNull: false,
+        defaultValue: 'ready'
+    }
 }, {
     tableName: "Delivery",
     paranoid: true,
