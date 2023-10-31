@@ -4,11 +4,23 @@ const Product = require('../models/payments/productModel')
 const Store = require('../models/payments/storeModel')
 const Create = async (req) => {
     const result = req.products.map(async(value)=> {
-        await Basket.create({
-            PDid: value.PDid,
-            Uid: req.Uid,
-            quentity: value.quentity
-        });
+        const inBasket = await Basket.findOne({
+            where:{
+                PDid: value.PDid,
+                Uid: req.Uid
+            }
+        })
+        if(inBasket!=null){
+            await inBasket.update({
+                quentity: inBasket.quentity+value.quentity
+            })
+        }else{
+            await Basket.create({
+                PDid: value.PDid,
+                Uid: req.Uid,
+                quentity: value.quentity
+            });
+        }
     })
     return result;
 };
