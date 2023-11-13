@@ -20,5 +20,9 @@ const Get = async  (req)=>{
     const data = await  Address.findByPk(req.Aid)
     return data
 }
-
-module.exports = { Create, Search , Get};
+const Delete = async  (req)=>{
+    const data = await Address.findByPk(req.Aid)
+    const result = await data.destroy()
+    return result
+}
+module.exports = { Create, Search , Get, Delete};
