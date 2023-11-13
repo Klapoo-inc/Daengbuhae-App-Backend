@@ -24,7 +24,8 @@ const fromRequest_create = (req) => {
         amount : req.body.amount,
         imp_uid: req.body.imp_uid,
         merchant_uid: req.body.merchant_uid,
-        payMethod: req.body.payMethod
+        payMethod: req.body.payMethod,
+        memo: req.memo
     };
 };
 

@@ -28,6 +28,10 @@ const Payment = sequelize.define('Payment', {
         allowNull: false,
         defaultValue: 0
     },
+    memo : {
+        type: Sequelize.STRING(128),
+        allowNull: true,
+    }
 }, {
     tableName: "Payment",
     paranoid: true,
